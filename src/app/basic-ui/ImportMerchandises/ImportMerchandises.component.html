@@ -1,0 +1,75 @@
+<div class="page-header">
+  <h3 class="page-title">
+    Phiếu nhâp hàng
+  </h3>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="javascript:;">Thêm phiếu nhập</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Dropdowns</li>
+    </ol>
+  </nav>
+</div>
+<div class="row">
+  <div class="col-12 grid-margin">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Danh sách phiếu nhập</h4>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>
+                      <input type="checkbox" aria-label="Checkbox for following text input">
+                </th>
+                <th>#</th>
+                <th>Mã nhập hàng</th>
+                <th>Thời gian nhập</th>
+                <th>Nhà cung cấp</th>
+                <th>Tổng số lượng</th>
+                <th>Tổng tiền hàng</th>
+                <th>Người tạo</th>
+                <th>Trạng thái</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <input type="checkbox" aria-label="Checkbox for following text input">
+                </td>
+                <td>
+                  1
+                </td>
+                <td>
+                  HD001
+                </td>
+                <td>
+                  G2-001
+                </td>
+                <td>
+                  17:30
+                </td>
+                <td>
+                  22:30
+                </td>
+                <td>
+                  100$
+                </td>
+                <td>
+                  5$
+                </td>
+                <td>
+                  Đãng thanh toán
+                </td>
+                <td>
+                  <a [routerLink]="['/edit-employee']"><i class="far fa-edit text-success"></i></a>
+                  <a href=""><i class="fas fa-trash-alt text-danger pl-1"></i></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
