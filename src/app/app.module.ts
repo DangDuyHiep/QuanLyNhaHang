@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import * as platformBrowser from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -18,6 +18,8 @@ import { ContentAnimateDirective } from './shared/directives/content-animate.dir
 import { TodoListComponent } from './apps/todo-list/todo-list.component';
 import { EmloyeeEditComponent } from './Employee/emloyee-edit/emloyee-edit.component';
 import { EmloyeeComponent } from './Employee/emloyee/emloyee.component';
+import { RouterModule, Router } from '@angular/router';
+
 
 @NgModule({
   declarations: [
@@ -32,15 +34,17 @@ import { EmloyeeComponent } from './Employee/emloyee/emloyee.component';
     ContentAnimateDirective,
     EmloyeeEditComponent,
     EmloyeeComponent,
+    RouterModule,
+
   ],
   imports: [
-    BrowserModule,
+    platformBrowser.BrowserModule,
     AppRoutingModule,
     NgbModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    ChartsModule
+    ChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
