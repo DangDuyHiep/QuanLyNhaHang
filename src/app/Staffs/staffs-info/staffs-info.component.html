@@ -6,30 +6,22 @@
                 aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <img src="img/lo.png" class="img-fluid ml-2" alt="">
+            <img src="../../../assets/images/foods/lo.png" class="img-fluid ml-2" alt="">
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                <ul class="nav nav-tabs mr-auto ml-auto" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#ban" role="tab"
-                            aria-controls="home" aria-selected="true">Bàn</a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#thucdon" role="tab"
-                            aria-controls="profile" aria-selected="false">Thực đơn</a>
-                    </li>
-                </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0 " type="submit">Tìm kiếm</button>
                 </form>
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                             aria-haspopup="true" aria-expanded="false" style="color:black;"><img
-                                src="img/hiepga.png" class="rounded-circle" alt="">&nbsp; Phục Vụ</a>
+                                src="../../../assets/images/foods/hiepga.png" class="rounded-circle" alt="">&nbsp; Phục
+                            Vụ</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Thông tin</a>
                             <a class="dropdown-item" href="#">Đăng xuất</a>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -37,346 +29,362 @@
     </div>
     <!--body-->
     <div class="body text-success m-3">
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="ban" role="tabpanel" aria-labelledby="home-tab">
-                <div class="row">
-                    <div class="col-sm-3">
+        <tabset>
+            <tab heading="First tab" class="mt-2" (selectTab)="onSelect($event)">
+                <div class="body text-success m-3">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="ban" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="card nav-item" role="presentation">
+                                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#thucdon" role="tab"
+                                                    aria-controls="profile" aria-selected="false"><img src="img/u.jpg" class="img-fluid"
+                                                        alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="card">
+                                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#thucdon" role="tab"
+                                                    aria-controls="profile" aria-selected="false"><img src="img/u.jpg" class="img-fluid"
+                                                        alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5">
+                                        <div class="col-6">
+                                            <div class="card">
+                                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#thucdon" role="tab"
+                                                    aria-controls="profile" aria-selected="false"><img src="img/u.jpg" class="img-fluid"
+                                                        alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="card">
+                                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#thucdon" role="tab"
+                                                    aria-controls="profile" aria-selected="false"><img src="img/u.jpg" class="img-fluid"
+                                                        alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-sm-6">
+                </div>
+            </tab>
+            <tab heading="Second tab" class="mt-2" (selectTab)="onSelect($event)">
+                <div >
+                    <div class="xbody text-success m-3">
                         <div class="row">
-                            <div class="col-6">
-                                <div class="card nav-item" role="presentation">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#thucdon"
-                                        role="tab" aria-controls="profile" aria-selected="false"><img
-                                            src="img/u.jpg" class="img-fluid" alt="">
-                                    </a>
-                                </div>
+                            <div class="col-sm-4 text-center">
+                                <h5 style="color: red;">Bàn : 1</h5>
                             </div>
-                            <div class="col-6">
-                                <div class="card">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#thucdon"
-                                        role="tab" aria-controls="profile" aria-selected="false"><img
-                                            src="img/u.jpg" class="img-fluid" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mt-5">
-                            <div class="col-6">
-                                <div class="card">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#thucdon"
-                                        role="tab" aria-controls="profile" aria-selected="false"><img
-                                            src="img/u.jpg" class="img-fluid" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="card">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#thucdon"
-                                        role="tab" aria-controls="profile" aria-selected="false"><img
-                                            src="img/u.jpg" class="img-fluid" alt="">
-                                    </a>
-                                </div>
+                            <div class="col-sm-8 text-right">
+                                <span class="mr-5" style="color: black;">28/06/2020</span>
+                                <span style="color: black;">10:10</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-2">
-
-                    </div>
-                </div>
-            </div>
-            <!--Thực đơn -->
-            <div class="tab-pane fade" id="thucdon" role="tabpanel" aria-labelledby="profile-tab">
-                <div class="xbody text-success m-3">
                     <div class="row">
-                        <div class="col-sm-4 text-center">
-                            <h5 style="color: red;">Bàn : 1</h5>
+                        <div class="col-md-4">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th style="width:5%;">Stt</th>
+                                        <th style="width:40%">Tên món ăn</th>
+                                        <th style="width:25%">Số lượng</th>
+                                        <th style="width:30%">Giá</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>canh cá riêu hồng</td>
+                                        <td data-th="Quantity"><input class="form-control text-center" value="1"
+                                                type="number">
+                                        </td>
+                                        <td>210.000&nbsp;₫</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Lẩu Bò Bắc Ninh</td>
+                                        <td data-th="Quantity"><input class="form-control text-center" value="1"
+                                                type="number">
+                                        </td>
+                                        <td>250.000&nbsp;₫</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td data-th="Quantity">
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td data-th="Quantity">
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td data-th="Quantity">
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <nav class="navbar navbar-light bg-light">
+                                <form class="form-inline">
+                                    <button class="btn btn-outline-success ml-5 mr-5" type="button">Gữi Đến Bếp</button>
+                                    <button class="btn btn-outline-success ml-5" type="button">Thanh Toán</button>
+                                </form>
+                            </nav>
                         </div>
-                        <div class="col-sm-8 text-right">
-                            <span class="mr-5" style="color: black;">28/06/2020</span>
-                            <span style="color: black;">10:10</span>
+                        <div class="col-md-8">
+                            <section class="product-content clearfix">
+                                <div class="product-block product-grid row clearfix">
+                                    <div class="col-md-12">
+                                        <h5 style="color: red;">Món Canh</h5>
+                                        <p>-----------------------------</p>
+                                    </div>
+                                    <!--------------------------------------------------------------->
+                                    <div class="col-md-4 col-sm-3 col-xs-12 product-resize product-item-box fixheight"
+                                        style="height: auto;">
+                                        <div class="product-item">
+                                            <div class="image image-resize img-fluid" style="height: auto;">
+                                                <a href="" title=" ">
+                                                    <img src="../../../assets/images/foods/la002.jpg"
+                                                        class="img-responsive mg-fluid">
+                                                </a>
+                                                <span class="bg-warning">5<i class="fas fa-star"
+                                                        style="color: yellow;"></i></span>
+                                            </div>
+                                            <div class="right-block">
+                                                <h6 class="name">
+                                                    <a href="" title=" ">Canh rau củ chua
+                                                        ngọt</a>
+                                                </h6>
+                                                <div class="price">
+                                                    <span class="">250.000&nbsp;₫</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!---------------------------------------------------------------->
+                                    <div class="col-md-4 col-sm-3 col-xs-12 product-resize product-item-box fixheight"
+                                        style="height: auto;">
+                                        <div class="product-item">
+                                            <div class="image image-resize img-fluid" style="height: auto;">
+                                                <a href="" title=" ">
+                                                    <img src="../../../assets/images/foods/la002.jpg"
+                                                        class="img-responsive">
+                                                </a>
+                                                <span class="bg-warning">5<i class="fas fa-star"
+                                                        style="color: yellow;"></i></span>
+                                            </div>
+                                            <div class="right-block">
+                                                <h6 class="name">
+                                                    <a href="" title=" ">Canh rau củ chua
+                                                        ngọt</a>
+                                                </h6>
+                                                <div class="price">
+                                                    <span class="">250.000&nbsp;₫</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-------------------------------------------------------------------->
+                                    <div class="col-md-4 col-sm-3 col-xs-12 product-resize product-item-box fixheight"
+                                        style="height: auto;">
+                                        <div class="product-item">
+                                            <div class="image image-resize img-fluid" style="height: auto;">
+                                                <a href="" title=" ">
+                                                    <img src="../../../assets/images/foods/la002.jpg"
+                                                        class="img-responsive">
+                                                </a>
+                                                <span class="bg-warning">5<i class="fas fa-star"
+                                                        style="color: yellow;"></i></span>
+                                            </div>
+                                            <div class="right-block">
+                                                <h6 class="name">
+                                                    <a href="" title=" ">Canh rau củ chua
+                                                        ngọt</a>
+                                                </h6>
+                                                <div class="price">
+                                                    <span class="">250.000&nbsp;₫</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <p>-----------------------------</p>
+                                        <h5 style="color: red;">Món Lẩu</h5>
+                                        <p>-----------------------------</p>
+                                    </div>
+                                    <!------------------------------------------------------------------------>
+                                    <div class="col-md-4 col-sm-3 col-xs-12 product-resize product-item-box fixheight"
+                                        style="height: auto;">
+                                        <div class="product-item">
+                                            <div class="image image-resize img-fluid" style="height: auto;">
+                                                <a href="" title=" ">
+                                                    <img src="../../../assets/images/foods/la002.jpg"
+                                                        class="img-responsive">
+                                                </a>
+                                                <span class="bg-warning">5<i class="fas fa-star"
+                                                        style="color: yellow;"></i></span>
+                                            </div>
+                                            <div class="right-block">
+                                                <h6 class="name">
+                                                    <a href="" title=" ">Canh rau củ chua
+                                                        ngọt</a>
+                                                </h6>
+                                                <div class="price">
+                                                    <span class="">250.000&nbsp;₫</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--------------------------------------------------------------------------->
+                                    <div class="col-md-4 col-sm-3 col-xs-12 product-resize product-item-box fixheight"
+                                        style="height: auto;">
+                                        <div class="product-item">
+                                            <div class="image image-resize img-fluid" style="height: auto;">
+                                                <a href="" title=" ">
+                                                    <img src="../../../assets/images/foods/la002.jpg"
+                                                        class="img-responsive">
+                                                </a>
+                                                <span class="bg-warning">5<i class="fas fa-star"
+                                                        style="color: yellow;"></i></span>
+                                            </div>
+                                            <div class="right-block">
+                                                <h6 class="name">
+                                                    <a href="" title=" ">Canh rau củ chua
+                                                        ngọt</a>
+                                                </h6>
+                                                <div class="price">
+                                                    <span class="">250.000&nbsp;₫</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!------------------------------------------------------------------------------>
+                                    <div class="col-md-4 col-sm-3 col-xs-12 product-resize product-item-box fixheight"
+                                        style="height: auto;">
+                                        <div class="product-item">
+                                            <div class="image image-resize img-fluid" style="height: auto;">
+                                                <a href="" title=" ">
+                                                    <img src="../../../assets/images/foods/la002.jpg"
+                                                        class="img-responsive">
+                                                </a>
+                                                <span class="bg-warning">5<i class="fas fa-star"
+                                                        style="color: yellow;"></i></span>
+                                            </div>
+                                            <div class="right-block">
+                                                <h6 class="name">
+                                                    <a href="" title=" ">Canh rau củ chua
+                                                        ngọt</a>
+                                                </h6>
+                                                <div class="price">
+                                                    <span class="">250.000&nbsp;₫</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!----------------------------------------------------------------------------------->
+                                    <div class="col-md-12">
+                                        <p>-----------------------------</p>
+                                        <h5 style="color: red;">Món Hấp</h5>
+                                        <p>-----------------------------</p>
+                                    </div>
+                                    <!----------------------------------------------------------------------------------->
+                                    <div class="col-md-4 col-sm-3 col-xs-12 product-resize product-item-box fixheight"
+                                        style="height: auto;">
+                                        <div class="product-item">
+                                            <div class="image image-resize img-fluid" style="height: auto;">
+                                                <a href="" title=" ">
+                                                    <img src="../../../assets/images/foods/la002.jpg"
+                                                        class="img-responsive">
+                                                </a>
+                                                <span class="bg-warning">5<i class="fas fa-star"
+                                                        style="color: yellow;"></i></span>
+                                            </div>
+                                            <div class="right-block">
+                                                <h6 class="name">
+                                                    <a href="" title=" ">Canh rau củ chua
+                                                        ngọt</a>
+                                                </h6>
+                                                <div class="price">
+                                                    <span class="">250.000&nbsp;₫</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!---------------------------------------------------------->
+                                    <div class="col-md-4 col-sm-3 col-xs-12 product-resize product-item-box fixheight"
+                                        style="height: auto;">
+                                        <div class="product-item">
+                                            <div class="image image-resize img-fluid" style="height: auto;">
+                                                <a href="" title=" ">
+                                                    <img src="../../../assets/images/foods/la002.jpg"
+                                                        class="img-responsive">
+                                                </a>
+                                                <span class="bg-warning">5<i class="fas fa-star"
+                                                        style="color: yellow;"></i></span>
+                                            </div>
+                                            <div class="right-block">
+                                                <h6 class="name">
+                                                    <a href="" title=" ">Canh rau củ chua
+                                                        ngọt</a>
+                                                </h6>
+                                                <div class="price">
+                                                    <span class="">250.000&nbsp;₫</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-------------------------------------------------------------->
+                                    <div class="col-md-4 col-sm-3 col-xs-12 product-resize product-item-box fixheight"
+                                        style="height: auto;">
+                                        <div class="product-item">
+                                            <div class="image image-resize img-fluid" style="height: auto;">
+                                                <a href="" title=" ">
+                                                    <img src="../../../assets/images/foods/la002.jpg"
+                                                        class="img-responsive">
+                                                </a>
+                                                <span class="bg-warning">5<i class="fas fa-star"
+                                                        style="color: yellow;"></i></span>
+                                            </div>
+                                            <div class="right-block">
+                                                <h6 class="name">
+                                                    <a href="" title=" ">Canh rau củ chua
+                                                        ngọt</a>
+                                                </h6>
+                                                <div class="price">
+                                                    <span class="">250.000&nbsp;₫</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th style="width:5%;">Stt</th>
-                                    <th style="width:40%">Tên món ăn</th>
-                                    <th style="width:25%">Số lượng</th>
-                                    <th style="width:30%">Giá</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>canh cá riêu hồng</td>
-                                    <td data-th="Quantity"><input class="form-control text-center" value="1"
-                                            type="number">
-                                    </td>
-                                    <td>210.000&nbsp;₫</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Lẩu Bò Bắc Ninh</td>
-                                    <td data-th="Quantity"><input class="form-control text-center" value="1"
-                                            type="number">
-                                    </td>
-                                    <td>250.000&nbsp;₫</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td data-th="Quantity">
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td data-th="Quantity">
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td data-th="Quantity">
-                                    </td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <nav class="navbar navbar-light bg-light">
-                            <form class="form-inline">
-                                <button class="btn btn-outline-success ml-5 mr-5" type="button">Gữi Đến Bếp</button>
-                                <button class="btn btn-outline-success ml-5" type="button">Thanh Toán</button>
-                            </form>
-                        </nav>
-                    </div>
-                    <div class="col-md-8">
-                        <section class="product-content clearfix">
-                            <div class="product-block product-grid row clearfix">
-                                <div class="col-md-12">
-                                    <h5 style="color: red;">Món Canh</h5>
-                                    <p>-----------------------------</p>
-                                </div>
-                                <!--------------------------------------------------------------->
-                                <div class="col-md-4 col-sm-3 col-xs-12 product-resize product-item-box fixheight"
-                                    style="height: auto;">
-                                    <div class="product-item">
-                                        <div class="image image-resize img-fluid" style="height: auto;">
-                                            <a href="" title=" ">
-                                                <img src="img/la002.png" class="img-responsive">
-                                            </a>
-                                            <span class="bg-warning">5<i class="fas fa-star"
-                                                    style="color: yellow;"></i></span>
-                                        </div>
-                                        <div class="right-block">
-                                            <h6 class="name">
-                                                <a href="" title=" ">Canh rau củ chua
-                                                    ngọt</a>
-                                            </h6>
-                                            <div class="price">
-                                                <span class="">250.000&nbsp;₫</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!---------------------------------------------------------------->
-                                <div class="col-md-4 col-sm-3 col-xs-12 product-resize product-item-box fixheight"
-                                    style="height: auto;">
-                                    <div class="product-item">
-                                        <div class="image image-resize img-fluid" style="height: auto;">
-                                            <a href="" title=" ">
-                                                <img src="img/la002.png" class="img-responsive">
-                                            </a>
-                                            <span class="bg-warning">5<i class="fas fa-star"
-                                                    style="color: yellow;"></i></span>
-                                        </div>
-                                        <div class="right-block">
-                                            <h6 class="name">
-                                                <a href="" title=" ">Canh rau củ chua
-                                                    ngọt</a>
-                                            </h6>
-                                            <div class="price">
-                                                <span class="">250.000&nbsp;₫</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-------------------------------------------------------------------->
-                                <div class="col-md-4 col-sm-3 col-xs-12 product-resize product-item-box fixheight"
-                                    style="height: auto;">
-                                    <div class="product-item">
-                                        <div class="image image-resize img-fluid" style="height: auto;">
-                                            <a href="" title=" ">
-                                                <img src="img/la002.png" class="img-responsive">
-                                            </a>
-                                            <span class="bg-warning">5<i class="fas fa-star"
-                                                    style="color: yellow;"></i></span>
-                                        </div>
-                                        <div class="right-block">
-                                            <h6 class="name">
-                                                <a href="" title=" ">Canh rau củ chua
-                                                    ngọt</a>
-                                            </h6>
-                                            <div class="price">
-                                                <span class="">250.000&nbsp;₫</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <p>-----------------------------</p>
-                                    <h5 style="color: red;">Món Lẩu</h5>
-                                    <p>-----------------------------</p>
-                                </div>
-                                <!------------------------------------------------------------------------>
-                                <div class="col-md-4 col-sm-3 col-xs-12 product-resize product-item-box fixheight"
-                                    style="height: auto;">
-                                    <div class="product-item">
-                                        <div class="image image-resize img-fluid" style="height: auto;">
-                                            <a href="" title=" ">
-                                                <img src="img/la002.png" class="img-responsive">
-                                            </a>
-                                            <span class="bg-warning">5<i class="fas fa-star"
-                                                    style="color: yellow;"></i></span>
-                                        </div>
-                                        <div class="right-block">
-                                            <h6 class="name">
-                                                <a href="" title=" ">Canh rau củ chua
-                                                    ngọt</a>
-                                            </h6>
-                                            <div class="price">
-                                                <span class="">250.000&nbsp;₫</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+            </tab>
+        </tabset>
 
-                                <!--------------------------------------------------------------------------->
-                                <div class="col-md-4 col-sm-3 col-xs-12 product-resize product-item-box fixheight"
-                                    style="height: auto;">
-                                    <div class="product-item">
-                                        <div class="image image-resize img-fluid" style="height: auto;">
-                                            <a href="" title=" ">
-                                                <img src="img/la002.png" class="img-responsive">
-                                            </a>
-                                            <span class="bg-warning">5<i class="fas fa-star"
-                                                    style="color: yellow;"></i></span>
-                                        </div>
-                                        <div class="right-block">
-                                            <h6 class="name">
-                                                <a href="" title=" ">Canh rau củ chua
-                                                    ngọt</a>
-                                            </h6>
-                                            <div class="price">
-                                                <span class="">250.000&nbsp;₫</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!------------------------------------------------------------------------------>
-                                <div class="col-md-4 col-sm-3 col-xs-12 product-resize product-item-box fixheight"
-                                    style="height: auto;">
-                                    <div class="product-item">
-                                        <div class="image image-resize img-fluid" style="height: auto;">
-                                            <a href="" title=" ">
-                                                <img src="img/la002.png" class="img-responsive">
-                                            </a>
-                                            <span class="bg-warning">5<i class="fas fa-star"
-                                                    style="color: yellow;"></i></span>
-                                        </div>
-                                        <div class="right-block">
-                                            <h6 class="name">
-                                                <a href="" title=" ">Canh rau củ chua
-                                                    ngọt</a>
-                                            </h6>
-                                            <div class="price">
-                                                <span class="">250.000&nbsp;₫</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!----------------------------------------------------------------------------------->
-                                <div class="col-md-12">
-                                    <p>-----------------------------</p>
-                                    <h5 style="color: red;">Món Hấp</h5>
-                                    <p>-----------------------------</p>
-                                </div>
-                                <!----------------------------------------------------------------------------------->
-                                <div class="col-md-4 col-sm-3 col-xs-12 product-resize product-item-box fixheight"
-                                    style="height: auto;">
-                                    <div class="product-item">
-                                        <div class="image image-resize img-fluid" style="height: auto;">
-                                            <a href="" title=" ">
-                                                <img src="img/la002.png" class="img-responsive">
-                                            </a>
-                                            <span class="bg-warning">5<i class="fas fa-star"
-                                                    style="color: yellow;"></i></span>
-                                        </div>
-                                        <div class="right-block">
-                                            <h6 class="name">
-                                                <a href="" title=" ">Canh rau củ chua
-                                                    ngọt</a>
-                                            </h6>
-                                            <div class="price">
-                                                <span class="">250.000&nbsp;₫</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!---------------------------------------------------------->
-                                <div class="col-md-4 col-sm-3 col-xs-12 product-resize product-item-box fixheight"
-                                    style="height: auto;">
-                                    <div class="product-item">
-                                        <div class="image image-resize img-fluid" style="height: auto;">
-                                            <a href="" title=" ">
-                                                <img src="img/la002.png" class="img-responsive">
-                                            </a>
-                                            <span class="bg-warning">5<i class="fas fa-star"
-                                                    style="color: yellow;"></i></span>
-                                        </div>
-                                        <div class="right-block">
-                                            <h6 class="name">
-                                                <a href="" title=" ">Canh rau củ chua
-                                                    ngọt</a>
-                                            </h6>
-                                            <div class="price">
-                                                <span class="">250.000&nbsp;₫</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-------------------------------------------------------------->
-                                <div class="col-md-4 col-sm-3 col-xs-12 product-resize product-item-box fixheight"
-                                    style="height: auto;">
-                                    <div class="product-item">
-                                        <div class="image image-resize img-fluid" style="height: auto;">
-                                            <a href="" title=" ">
-                                                <img src="img/la002.png" class="img-responsive">
-                                            </a>
-                                            <span class="bg-warning">5<i class="fas fa-star"
-                                                    style="color: yellow;"></i></span>
-                                        </div>
-                                        <div class="right-block">
-                                            <h6 class="name">
-                                                <a href="" title=" ">Canh rau củ chua
-                                                    ngọt</a>
-                                            </h6>
-                                            <div class="price">
-                                                <span class="">250.000&nbsp;₫</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-                </div>
-            </div>
-        </div>
 
+    </div>
+</div>

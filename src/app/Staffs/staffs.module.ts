@@ -5,33 +5,25 @@ import { StaffsInfoComponent } from './staffs-info/staffs-info.component';
 import { StaffsBillsComponent } from './staffs-bills/staffs-bills.component';
 import { StaffsChifsComponent } from './staffs-chifs/staffs-chifs.component';
 import { Routes, RouterModule } from '@angular/router';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/Staffs', pathMatch: 'full' },
-  { path: 'staffs-bills', loadChildren: () => import('./staffs.module').then(m => m.StaffsModule) },
-  { path: 'staffs-info', loadChildren: () => import('./staffs.module').then(m => m.StaffsModule) },
-  { path: 'staffs-chifs', loadChildren: () => import('./staffs.module').then(m => m.StaffsModule) },
+  { path: 'staffs-info', component: StaffsInfoComponent },
+  { path: 'staffs-bill', component: StaffsBillsComponent },
+  { path: 'staffs-chif', component: StaffsChifsComponent }
 ];
-
-@NgModule({
-  imports: [CommonModule,
-    NgbModule,
-  RouterModule.forChild(routes)],
-   
-})
-export class AppRoutingModule { }
 
 @NgModule({
   declarations: [
     StaffsInfoComponent,
     StaffsBillsComponent,
     StaffsChifsComponent,
-    RouterModule,
   ],
     
   imports: [
-    CommonModule
+    CommonModule,
+    TabsModule.forRoot(),
+    RouterModule.forChild(routes)
   ]
 })
 export class StaffsModule { }

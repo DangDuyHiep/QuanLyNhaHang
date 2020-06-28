@@ -18,7 +18,7 @@ import { ContentAnimateDirective } from './shared/directives/content-animate.dir
 import { TodoListComponent } from './apps/todo-list/todo-list.component';
 import { EmloyeeEditComponent } from './Employee/emloyee-edit/emloyee-edit.component';
 import { EmloyeeComponent } from './Employee/emloyee/emloyee.component';
-import { RouterModule, Router } from '@angular/router';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 
 @NgModule({
@@ -34,7 +34,6 @@ import { RouterModule, Router } from '@angular/router';
     ContentAnimateDirective,
     EmloyeeEditComponent,
     EmloyeeComponent,
-    RouterModule,
 
   ],
   imports: [
@@ -45,6 +44,7 @@ import { RouterModule, Router } from '@angular/router';
     FormsModule,
     ReactiveFormsModule,
     ChartsModule,
+    TabsModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
