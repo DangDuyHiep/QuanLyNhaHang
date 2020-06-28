@@ -1,0 +1,196 @@
+<div class="card-header bg-transparent border-success">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <img src="img/lo.png" class="img-fluid ml-2 mr-5" alt="">
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <form class="form-inline my-2 my-lg-0 ml-auto mr-auto">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
+            </form>
+            <ul class="navbar-nav ml-5 mt-2 mt-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                        aria-haspopup="true" aria-expanded="false" style="color: royalblue;"><img src="img/hiepga.png"
+                            class="rounded-circle" alt="">nhanvien</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Thông tin</a>
+                        <a class="dropdown-item" href="#">Đăng xuất</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div class="limit ml-5 mt-2">
+    <span>Bàn</span>
+    <select id="lblimit" name="lblimit" class="nb_item"
+        onchange="window.location.href = this.options[this.selectedIndex].value">
+        <option selected="selected" value="?limit=20">1</option>
+        <option value="?limit=50">2</option>
+        <option value="?limit=100">3</option>
+        <option value="?limit=250">4</option>
+        <option value="?limit=500">5</option>
+        <option value="?limit=100">6</option>
+        <option value="?limit=250">7</option>
+        <option value="?limit=500">8</option>
+    </select>
+</div>
+<h2 class="text-center mt-5">Thanh Toán Hóa Đơn</h2>
+<div class="container">
+    <table id="cart" class="table table-hover table-condensed">
+        <thead>
+            <tr>
+                <th style="width:40%">Tên món ăn</th>
+                <th style="width:15%">Giá</th>
+                <th style="width:8%">Số lượng</th>
+                <th style="width:22%" class="text-center">Thành tiền</th>
+                <th style="width:15%"> </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-th="Product">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h6 class="nomargin">Lẩu cá hú Bắc Kinh </h6>
+                            <p>size M</p>
+                        </div>
+                        <div class="col-sm-6 hidden-xs"><img src="img/la001.png" alt="" class="img-responsive"
+                                width="140">
+                        </div>
+                    </div>
+                </td>
+                <td data-th="Price">320.000 đ</td>
+                <td data-th="Quantity">1
+                </td>
+                <td data-th="Subtotal" class="text-center">320.000 đ</td>
+                <td class="actions" data-th="">
+                    <button class="btn btn-info btn-sm"><i class="fa fa-edit"></i>
+                    </button>
+                    <button class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i>
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td data-th="Product">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h6 class="nomargin">Lẩu Khô Nam Định</h6>
+                            <p>size S</p>
+                        </div>
+                        <div class="col-sm-6 hidden-xs"><img src="img/la002.png" alt="" class="img-responsive"
+                                width="140">
+                        </div>
+                    </div>
+                </td>
+                <td data-th="Price">230.000 đ</td>
+                <td data-th="Quantity">1
+                </td>
+                <td data-th="Subtotal" class="text-center">230.000 đ</td>
+                <td class="actions" data-th="">
+                    <button class="btn btn-info btn-sm"><i class="fa fa-edit"></i>
+                    </button>
+                    <button class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Thêm món ăn</a>
+                </td>
+                <td colspan="2" class="hidden-xs"> </td>
+                <td class="hidden-xs text-center"><strong>Tổng tiền 550.000 đ</strong>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                        Thanh Toán<i class="fas fa-arrow-circle-right" style="color: silver;"></i>
+                    </button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="img/lo.png" alt="">
+            </div>
+            <div class="modal-body">
+                <h6>Address: Nguyễn Văn Bảo, Gò Vấp.</h6>
+                <h6>tel : 0383881717</h6>
+                <h2 class="text-center">Hóa Đơn Thanh Toán</h2>
+                <p class="text-center">số HĐ:45645123</p>
+                <p>-----------------------------------------------------------------------</p>
+                <table class="table table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col">Stt</th>
+                            <th scope="col">Tên Món</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Đơn giá</th>
+                            <th scope="col">Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Lẩu cá hú bắc kinh</td>
+                            <td>1</td>
+                            <td>320.000&nbsp;đ</td>
+                            <td>320.000&nbsp;đ</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Lẩu khô nam định</td>
+                            <td>1</td>
+                            <td>230.000&nbsp;đ</td>
+                            <td>230.000&nbsp;đ</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>-----------------------------------------------------------------------</p>
+                <!---->
+                <table class="table table-borderless">
+                    <tbody>
+                        <tr>
+                            <th scope="col">Tổng cộng: </th>
+                            <td class="text-right">550.000&nbsp;đ</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">Tiền khách trả: </th>
+                            <td class="text-right">550.000&nbsp;đ</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">Tiền hoàn lại khách: </th>
+                            <td class="text-right">0&nbsp;đ</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>-----------------------------------------------------------------------</p>
+                <h4>Xin Cảm Ơn Quý Khách!</h4>
+                <h6>Thu ngân: Phạm Hải Đường</h6>
+                <p>ngày : 28/06/2020 &nbsp;&nbsp;thời gian: 10:10</p>
+                <p>-----------------------------------------------------------------------</p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
