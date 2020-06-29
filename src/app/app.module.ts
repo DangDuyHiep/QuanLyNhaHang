@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
+import {TablesModule} from './tables/tables.module';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -18,6 +19,8 @@ import { ContentAnimateDirective } from './shared/directives/content-animate.dir
 import { TodoListComponent } from './apps/todo-list/todo-list.component';
 import { EmloyeeEditComponent } from './Employee/emloyee-edit/emloyee-edit.component';
 import { EmloyeeComponent } from './Employee/emloyee/emloyee.component';
+import { ModalModule } from "ngx-bootstrap/modal";
+
 
 @NgModule({
   declarations: [
@@ -37,6 +40,7 @@ import { EmloyeeComponent } from './Employee/emloyee/emloyee.component';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    TablesModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
