@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import * as platformBrowser from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -19,7 +19,7 @@ import { ContentAnimateDirective } from './shared/directives/content-animate.dir
 import { TodoListComponent } from './apps/todo-list/todo-list.component';
 import { EmloyeeEditComponent } from './Employee/emloyee-edit/emloyee-edit.component';
 import { EmloyeeComponent } from './Employee/emloyee/emloyee.component';
-import { ModalModule } from "ngx-bootstrap/modal";
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 
 @NgModule({
@@ -35,16 +35,18 @@ import { ModalModule } from "ngx-bootstrap/modal";
     ContentAnimateDirective,
     EmloyeeEditComponent,
     EmloyeeComponent,
+
   ],
   imports: [
-    BrowserModule,
+    platformBrowser.BrowserModule,
     AppRoutingModule,
     NgbModule,
     TablesModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    ChartsModule
+    ChartsModule,
+    TabsModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
