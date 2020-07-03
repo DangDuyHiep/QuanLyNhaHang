@@ -6,9 +6,11 @@ import { StaffsBillsComponent } from './staffs-bills/staffs-bills.component';
 import { StaffsChifsComponent } from './staffs-chifs/staffs-chifs.component';
 import { Routes, RouterModule } from '@angular/router';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { InfoDetailComponent } from './info-detail/info-detail.component';
 
 const routes: Routes = [
   { path: 'staffs-info', component: StaffsInfoComponent },
+  { path: 'staffs-info/:id', component: InfoDetailComponent },
   { path: 'staffs-bill', component: StaffsBillsComponent },
   { path: 'staffs-chif', component: StaffsChifsComponent }
 ];
@@ -18,6 +20,7 @@ const routes: Routes = [
     StaffsInfoComponent,
     StaffsBillsComponent,
     StaffsChifsComponent,
+    InfoDetailComponent,
   ],
     
   imports: [

@@ -1,16 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { TabsetComponent, TabDirective } from 'ngx-bootstrap/tabs';
+import { Component, OnInit } from '@angular/core';
 import { FoodService } from 'src/app/services/food.service';
 import { Food } from 'src/app/Models/food';
 
 @Component({
-  selector: 'app-staffs-info',
-  templateUrl: './staffs-info.component.html',
-  styleUrls: ['./staffs-info.component.css']
+  selector: 'app-info-detail',
+  templateUrl: './info-detail.component.html',
+  styleUrls: ['./info-detail.component.scss']
 })
-export class StaffsInfoComponent implements OnInit {
+export class InfoDetailComponent implements OnInit {
   foods: Food[] = [];
-
   constructor(private foodService: FoodService) { }
 
   ngOnInit() {
@@ -19,8 +17,13 @@ export class StaffsInfoComponent implements OnInit {
   loadData() {
     this.foodService.getAll().subscribe(res => {
       this.foods = res;
+      this.convertData();
       console.log(this.foods);
     });
   }
-
+  convertData() {
+    this.foods.forEach( function (f) {
+      f.foo_Id = f.foo_Id.trim();
+    })
+  }
 }
