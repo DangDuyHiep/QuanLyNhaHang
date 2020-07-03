@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal/modal.directive';
 import { EmployeeService } from 'src/app/services/employee.service';
-import {employee } from 'src/app/models/employee';
+import {employee } from 'src/app/models/datatypes';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -53,6 +53,7 @@ export class BasicTableComponent implements OnInit {
       this.employeeservice.get(id).subscribe(res =>{
         console.log(res.data);
         this.aEmployee = res.data;
+        this.loadData();
         this.editModal.show();
       });
     }
@@ -67,7 +68,7 @@ export class BasicTableComponent implements OnInit {
       });
 
     }else{
-      this.employeeservice.add(this.aEmployee).subscribe(res => {
+      this.employeeservice.update(this.aEmployee).subscribe(res => {
         this.editModal.hide();
         this.loadData();
       });

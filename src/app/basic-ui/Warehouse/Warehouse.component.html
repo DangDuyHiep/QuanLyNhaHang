@@ -29,27 +29,27 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let row of warehouse, let i = index">
                 <td>
                   <input type="checkbox" aria-label="Checkbox for following text input">
                 </td>
                 <td>
-                  1
+                  {{i+1}}
                 </td>
                 <td>
-                  kk001
+                  {{row.firstName}}
                 </td>
                 <td>
-                  17:30
+                  {{row.lastName}}
                 </td>
                 <td>
-                  Rau cần
+                  {{row.email}}
                 </td>
                 <td>
-                  Thực phẩm
+                  {{row.phone}}
                 </td>
                 <td>
-                  kg
+                  {{row.stuId}}
                 </td>
                 <td>
                   10

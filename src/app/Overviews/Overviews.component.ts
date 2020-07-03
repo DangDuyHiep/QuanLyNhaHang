@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { employee } from 'src/app/models/datatypes';
+import { Router } from '@angular/router';
+import { OverviewsService } from 'src/app/services/overviews.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  aEmployee : employee = {} as employee;
+  constructor(private modalService: NgbModal , private router:Router , private overviewService : OverviewsService) {}
 
-  ngOnInit() {
+  employee : employee[] = [];
+  ngOnInit() : void{
+    this.loadData();
+  }
+
+  loadData(){
+    this.overviewService.getAll().subscribe(res => {
+      this.employee = res.data;
+    });
   }
 
   date: Date = new Date();

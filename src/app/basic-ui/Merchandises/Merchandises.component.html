@@ -4,7 +4,8 @@
   </h3>
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="javascript:;">Thêm hàng hóa</a></li>
+      <button type="button" class="btn bg-success" data-toggle="modal" data-target="#add" (click)="showmodal(0)"><i
+        class="fas fa-plus"></i>Thêm hàng hóa</button>
     </ol>
   </nav>
 </div>
@@ -31,64 +32,35 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let row of mechandises; let i = index">
                 <td>
                   <input type="checkbox" aria-label="Checkbox for following text input">
                 </td>
                 <td>
-                  1
+                  {{row.stuId}}
                 </td>
                 <td>
                   <img src="assets/images/faces/thitbo.jpg" class="mr-2" alt="image">
                 </td>
                 <td>
-                  Bò xào cần
+                  {{row.firstName}}
                 </td>
                 <td>
-                  thức ăn
+                  {{row.lastName}}
                 </td>
                 <td>
-                  100$
+                  {{row.phone}}
                 </td>
                 <td>
-                  20$
-                </td>
-                <td>
-                  50kg
-                </td>
-                <td>
-                  <a [routerLink]="['/edit-employee']"><i class="far fa-edit text-success"></i></a>
-                  <a href=""><i class="fas fa-trash-alt text-danger pl-1"></i></a>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <input type="checkbox" aria-label="Checkbox for following text input">
-                </td>
-                <td>
-                  1
-                </td>
-                <td>
-                  <img src="assets/images/faces/thitbo.jpg" class="mr-2" alt="image">
-                </td>
-                <td>
-                  Đường ăn hành
-                </td>
-                <td>
-                  Thức ăn
-                </td>
-                <td>
-                  100$
-                </td>
-                <td>
-                  20$
+                  {{row.email}}
                 </td>
                 <td>
                   50kg
                 </td>
                 <td>
-                  <a [routerLink]="['/edit-employee']"><i class="far fa-edit text-success"></i></a>
-                  <a href=""><i class="fas fa-trash-alt text-danger pl-1"></i></a>
+                  <button type="button" class="btn btn-link" (click)="showmodal(row.id)"><i class="far fa-edit text-success"></i></button>
+                  <!--<a [routerLink]="['/student',row.id]"><i class="far fa-edit text-success"></i></a>-->
+                  <button type="button" class="btn btn0link" (click)="delete(row.id)"><i class="fas fa-trash-alt text-danger pl-1"></i></button>
                 </td>
               </tr>
             </tbody>
@@ -98,248 +70,75 @@
     </div>
   </div>
 </div>
-<!--<div class="row">
-  <div class="col-lg-6 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Default accordion</h4>
-        <p class="card-description">Use class <code>.accordion</code> for basic accordion</p>
-        <div class="mt-4">
-          <ngb-accordion [closeOthers]="true" activeIds="collapse-1">
-            <ngb-panel id="collapse-1" title="How can I pay for an order I placed?">
-              <ng-template ngbPanelContent>
-                <div class="row">
-                  <div class="col-3">
-                    <img src="assets/images/samples/300x300/10.jpg" class="mw-100"/>
-                  </div>
-                  <div class="col-9">
-                    You can pay for the product you have purchased using credit cards, debit cards, or via online banking.
-                    We also provide cash-on-delivery services.
-                  </div>
-                </div>
-              </ng-template>
-            </ngb-panel>
-            <ngb-panel id="collapse-2" title="I can’t sign in to my account">
-              <ng-template ngbPanelContent>
-                If while signing in to your account you see an error message, you can do the following
-                <ol class="pl-3 mt-4">
-                  <li>Check your network connection and try again</li>
-                  <li>Make sure your account credentials are correct while signing in</li>
-                  <li>Check whether your account is accessible in your region</li>
-                </ol>
-                <br>
-                <p class="text-success">
-                  <i class="mdi mdi-alert-octagon mr-2"></i>If the problem persists, you can contact our support.
-                </p>
-              </ng-template>
-            </ngb-panel>
-            <ngb-panel id="collapse-3" title="Can I add money to the wallet?">
-              <ng-template ngbPanelContent>
-                You can add money to the wallet for any future transaction from your bank account using net-banking, or credit/debit card transaction. The money in the wallet can be used for an easier and faster transaction.
-              </ng-template>
-            </ngb-panel>
-          </ngb-accordion>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-6 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Bordered accordions</h4>
-        <p class="card-description">Use class <code>.accordion-bordered</code> for bordered accordions</p>
-        <div class="mt-4">
-          <ngb-accordion [closeOthers]="true" activeIds="collapse-5" class="accordion-bordered">
-            <ngb-panel id="collapse-4" title="How can I pay for an order I placed?">
-                <ng-template ngbPanelContent>
-                  You can pay for the product you have purchased using credit cards, debit cards, or via online banking. We also provide cash-on-delivery services for most of our products. You can also use your account wallet for payment.
-                </ng-template>
-            </ngb-panel>
-            <ngb-panel id="collapse-5" title="I can’t sign in to my account">
-              <ng-template ngbPanelContent>
-                <p>
-                  If while signing in to your account you see an error message, you can do the following
-                </p>
-                <ol class="pl-3">
-                  <li>Check your network connection and try again</li>
-                  <li>Make sure your account credentials are correct while signing in</li>
-                  <li>Check whether your account is accessible in your region</li>
-                </ol>
-                <br>
-                <i class="mdi mdi-alert-octagon mr-2"></i>If the problem persists, you can contact our support.
-              </ng-template>
-            </ngb-panel>
-            <ngb-panel id="collapse-6" title="How can I deactivate my account?">
-                <ng-template ngbPanelContent>
-                  If you wish to deactivate your account, you can go to the Settings page of your account. Click on Account Settings and then click on Deactivate.
-                  You can join again as and when you wish.
-                </ng-template>
-            </ngb-panel>
-          </ngb-accordion>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-6 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Filled accordions</h4>
-        <p class="card-description">Use class <code>.accordion-filled</code> for Basic Accordion</p>
-        <ngb-accordion [closeOthers]="true" activeIds="collapse-8" class="accordion-filled">
-          <ngb-panel id="collapse-7" title="How can I deactivate my account?">
-            <ng-template ngbPanelContent>
-              You can at any time reclaim your money to your bank account that you have registered with us. If there are no registered account, then you can add an account in the ‘Register Bank Account’ page.
-            </ng-template>
-          </ngb-panel>
-          <ngb-panel id="collapse-8" title="How can I deactivate my account?">
-            <ng-template ngbPanelContent>
-              <ol class="pl-3">
-                <li>Click on the ‘forgot password’ link.</li>
-                <li>Enter your email address registered with us</li>
-                <li>Click on the link sent you in the email</li>
-                <li>Reset your password</li>
-              </ol>
-            </ng-template>
-          </ngb-panel>
-          <ngb-panel id="collapse-9" title="What should I do if I need any assistance using my account">
-            <ng-template ngbPanelContent>
-              If you need any assistance while using your account, you can contact our customer support via email at support@abc.com. Or you can live chat with our support team. Our support team is available 24*7
-            </ng-template>
-          </ngb-panel>
-        </ngb-accordion>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-6 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Solid header accordion</h4>
-        <p class="card-description">Use class <code>.accordion-solid-header</code> for basic accordion</p>
-        <div class="mt-4">
-          <ngb-accordion [closeOthers]="true" activeIds="collapse-12" class="accordion-solid-header">
-            <ngb-panel id="collapse-10" title="How can I pay for an order I placed?">
-              <ng-template ngbPanelContent>
-                <div class="row">
-                  <div class="col-3">
-                    <img src="assets/images/samples/300x300/10.jpg" class="mw-100"/>
-                  </div>
-                  <div class="col-9">
-                    You can pay for the product you have purchased using credit cards, debit cards, or via online banking.
-                    We also provide cash-on-delivery services.
-                  </div>
-                </div>
-              </ng-template>
-            </ngb-panel>
-            <ngb-panel id="collapse-11" title="I can’t sign in to my account">
-              <ng-template ngbPanelContent>
-                If while signing in to your account you see an error message, you can do the following
-                <ol class="pl-3 mt-4">
-                  <li>Check your network connection and try again</li>
-                  <li>Make sure your account credentials are correct while signing in</li>
-                  <li>Check whether your account is accessible in your region</li>
-                </ol>
-                <br>
-                <p class="text-success">
-                  <i class="mdi mdi-alert-octagon mr-2"></i>If the problem persists, you can contact our support.
-                </p>
-              </ng-template>
-            </ngb-panel>
-            <ngb-panel id="collapse-12" title="Can I add money to the wallet?">
-              <ng-template ngbPanelContent>
-                  You can add money to the wallet for any future transaction from your bank account using net-banking, or credit/debit card transaction. The money in the wallet can be used for an easier and faster transaction.
-              </ng-template>
-            </ngb-panel>
-          </ngb-accordion>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-6 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Solid content accordion</h4>
-        <p class="card-description">Use class <code>.accordion-solid-content</code> for basic accordion</p>
-        <div class="mt-4">
-          <ngb-accordion [closeOthers]="true" activeIds="collapse-13" class="accordion-solid-content">
-            <ngb-panel id="collapse-13" title="How can I pay for an order I placed?">
-              <ng-template ngbPanelContent>
-                <div class="row">
-                  <div class="col-3">
-                    <img src="assets/images/samples/300x300/10.jpg" class="mw-100"/>
-                  </div>
-                  <div class="col-9">
-                    You can pay for the product you have purchased using credit cards, debit cards, or via online banking.
-                    We also provide cash-on-delivery services.
-                  </div>
-                </div>
-              </ng-template>
-            </ngb-panel>
-            <ngb-panel id="collapse-14" title="I can’t sign in to my account">
-              <ng-template ngbPanelContent>
-                If while signing in to your account you see an error message, you can do the following
-                <ol class="pl-3 mt-4">
-                  <li>Check your network connection and try again</li>
-                  <li>Make sure your account credentials are correct while signing in</li>
-                  <li>Check whether your account is accessible in your region</li>
-                </ol>
-                <br>
-                <p class="text-danger">
-                  <i class="mdi mdi-alert-octagon mr-2"></i>If the problem persists, you can contact our support.
-                </p>
-              </ng-template>
-            </ngb-panel>
-            <ngb-panel id="collapse-15" title="Can I add money to the wallet?">
-              <ng-template ngbPanelContent>
-                You can add money to the wallet for any future transaction from your bank account using net-banking, or credit/debit card transaction. The money in the wallet can be used for an easier and faster transaction.
-              </ng-template>
-            </ngb-panel>
-          </ngb-accordion>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-6 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Multi colored accordion</h4>
-        <p class="card-description">Use class <code>.accordion-multi-colored</code> for basic accordion</p>
-        <div class="mt-4">
-          <ngb-accordion [closeOthers]="true" activeIds="collapse-17" class="accordion-multi-colored">
-            <ngb-panel id="collapse-16" title="How can I pay for an order I placed?">
-              <ng-template ngbPanelContent>
-                <div class="row">
-                  <div class="col-3">
-                    <img src="assets/images/samples/300x300/10.jpg" class="mw-100"/>
-                  </div>
-                  <div class="col-9">
-                    You can pay for the product you have purchased using credit cards, debit cards, or via online banking.
-                    We also provide cash-on-delivery services.
-                  </div>
-                </div>
-              </ng-template>
-            </ngb-panel>
-            <ngb-panel id="collapse-17" title="I can’t sign in to my account">
-              <ng-template ngbPanelContent>
-                If while signing in to your account you see an error message, you can do the following
-                <ol class="pl-3 mt-4">
-                  <li>Check your network connection and try again</li>
-                  <li>Make sure your account credentials are correct while signing in</li>
-                  <li>Check whether your account is accessible in your region</li>
-                </ol>
-                <br>
-                <p class="text-danger">
-                  <i class="mdi mdi-alert-octagon mr-2"></i>If the problem persists, you can contact our support.
-                </p>
-              </ng-template>
-            </ngb-panel>
-            <ngb-panel id="collapse-18" title="Can I add money to the wallet?">
-              <ng-template ngbPanelContent>
-                You can add money to the wallet for any future transaction from your bank account using net-banking, or credit/debit card transaction. The money in the wallet can be used for an easier and faster transaction.
-              </ng-template>
-            </ngb-panel>
-          </ngb-accordion>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>-->
+ <!--modal-->
+ <div class="modal fade" bsModal #editModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog"
+ aria-labelledby="dialog-static-name">
+ <div class="modal-dialog">
+   <div class="modal-content">
+       <div class="modal-header">
+       <h5 class="modal-title" id="staticBackdropLabel">{{action}} Hàng hóa </h5>
+       <button type="button" class="close pull-right" aria-label="Close" (click)="hidemodal()">
+         <span aria-hidden="true">&times;</span>
+       </button>
+     </div>
+     <div class="modal-body">
+       <div class="form-group row pt-4">
+         <label for="txtid" class="col-4 col-form-label repuire text-dark" style="text-align: left;"><strong>
+             ID</strong></label>
+         <div class="col-8">
+           <input type="text" class="form-control" id="txtid" [(ngModel)]="aMerchandises.stuId" name="txtid">
+         </div>
+       </div>
+       <div class="form-group row pb-2">
+         <label for="txtfirstName" class="col-4 col-form-label repuire text-dark"
+           style="text-align: left;"><strong>firstName</strong></label>
+         <div class="col-8">
+           <input type="text" class="form-control" id="txtfirstName" [(ngModel)]="aMerchandises.firstName"
+             name="txtfirstName">
+         </div>
+       </div>
+       <div class="form-group row pb-2">
+         <label for="txtlastname" class="col-4 col-form-label repuire text-dark"
+           style="text-align: left;"><strong>lastname</strong></label>
+         <div class="col-8">
+           <input type="text" class="form-control" id="txtlastname" [(ngModel)]="aMerchandises.lastName" name="txtlastname">
+         </div>
+       </div>
+       <div class="form-group row pb-2">
+         <label for="txtgmail" class="col-4 col-form-label repuire text-dark"
+           style="text-align: left;"><strong>Gmail</strong></label>
+         <div class="col-8">
+           <input type="text" class="form-control" id="txtgmail" [(ngModel)]="aMerchandises.email" name="txtgmail">
+         </div>
+       </div>
+       <div class="form-group row pb-2">
+         <label for="txtphone" class="col-4 col-form-label repuire text-dark"
+           style="text-align: left;"><strong>Phone</strong></label>
+         <div class="col-8">
+           <input type="text" class="form-control" id="txtphone" [(ngModel)]="aMerchandises.phone" name="txtphone">
+         </div>
+       </div>
+       <div class="form-group row">
+         <label for="Gioitinh" class="col-4 col-form-label repuire" style="text-align: left;"><strong>Giới
+             tính</strong></label>
+         <div class="col-8 mt-2" style="text-align: left;">
+           <div class="custom-control custom-radio custom-control-inline">
+             <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input"
+               [(ngModel)]="aMerchandises.gender" [value]="0">
+             <label class="custom-control-label" for="customRadioInline1">Nam</label>
+           </div>
+           <div class="custom-control custom-radio custom-control-inline">
+             <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input"
+               [(ngModel)]="aMerchandises.gender" [value]="1">
+             <label class="custom-control-label" for="customRadioInline2">Nữ</label>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="modal-footer">
+       <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="hidemodal()">Close</button>
+       <button type="button" class="btn btn-primary" (click)='save()'>Save</button>
+     </div>
+   </div>
+ </div>
+</div>

@@ -14,40 +14,7 @@
     </ul>
   </nav>
 </div>
-<!--<div class="form-group row">
-  <div class="col-3">
-    <div class="form-group row">
-      <label for="inputTime" class="col-sm-4">Ngày sinh</label>
-      <div class="col-sm-8">
-        <select id="inputTime" class="form-control" style="width: 200px;">
-          <option selected>Ngày</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-        </select>
-      </div>
-    </div>
-  </div>
-  <div class="col-3">
-    <div class="form-group row">
-      <label for="inputStartDay" class="col-sm-4 col-form-label repuire">Start day</label>
-      <div class="col-sm-8">
-          <input type="text" class="form-control" id="inputStartDay" placeholder="" value="20/6/2020" disabled>
-      </div>
-    </div>
-  </div>
-  <div class="col-3">
-    <div class="form-group row">
-      <label for="inputStartDay" class="col-sm-4 col-form-label repuire">End date</label>
-      <div class="col-sm-8">
-          <input type="text" class="form-control" id="inputStartDay" placeholder="" value="20/6/2020" disabled>
-      </div>
-    </div>
-  </div>
-</div>-->
+
 <div class="row">
   <div class="col-md-4 stretch-card grid-margin">
     <div class="card bg-gradient-danger card-img-holder text-white">
@@ -84,57 +51,6 @@
     </div>
   </div>
 </div>
-<!--<div class="row">
-  <div class="col-lg-7 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex flex-wrap justify-content-between">
-          <h4 class="card-title">Visit And Sales Statistics</h4>
-          <div id="visit-sale-chart-legend" class="rounded-legend legend-horizontal">
-            <ul>
-              <li>
-                <span class="legend-dots"></span>CHN
-              </li>
-              <li>
-                <span class="legend-dots"></span>USA
-              </li>
-              <li class="mr-0">
-                <span class="legend-dots"></span>UK
-              </li>
-            </ul>
-          </div>
-        </div>
-        <canvas baseChart #visitSaleChart [chartType]="'bar'" [datasets]="visitSaleChartData"
-          [labels]="visitSaleChartLabels" [options]="visitSaleChartOptions" [colors]="visitSaleChartColors"></canvas>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-5 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Traffic Sources</h4>
-        <canvas baseChart [chartType]="'doughnut'" [datasets]="trafficChartData" [labels]="trafficChartLabels"
-          [options]="trafficChartOptions" [colors]="trafficChartColors"></canvas>
-        <div id="traffic-chart-legend" class="rounded-legend legend-vertical legend-bottom-left pt-4">
-          <ul>
-            <li>
-              <span class="legend-dots"></span>Search Engines
-              <span class="float-right">30%</span>
-            </li>
-            <li>
-              <span class="legend-dots"></span>Direct Click
-              <span class="float-right">30%</span>
-            </li>
-            <li>
-              <span class="legend-dots"></span>Bookmarks Click
-              <span class="float-right">40%</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>-->
 <div class="row">
   <div class="col-12 grid-margin">
     <div class="card">
@@ -153,66 +69,24 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let row of employee; let i = index">
                 <td>
                   <img src="assets/images/faces/hinhthe.jpg" class="mr-2" alt="image">
                 </td>
                 <td>
-                  Dang Duy Hiep
+                  {{row.id}}
                 </td>
                 <td>
-                  Quản lý
+                  {{row.lastName}}
                 </td>
                 <td>
                   <label class="badge badge-gradient-success">1 , 2 , 3 , 4</label>
                 </td>
                 <td>
-                  Nam
+                  {{row.firstName}}
                 </td>
                 <td>
-                  DB-001
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <img src="assets/images/faces/lockute.jpg" class="mr-2" alt="image">
-
-                </td>
-                <td>
-                  Huynh Minh Loc
-                </td>
-                <td>
-                  phục vụ
-                </td>
-                <td>
-                  <label class="badge badge-gradient-info">5 , 6 , 7 , 8</label>
-                </td>
-                <td>
-                  Gái
-                </td>
-                <td>
-                  QN-001
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <img src="assets/images/faces/duongkute.jpg" class="mr-2" alt="image">
-
-                </td>
-                <td>
-                  Phạm Hải Đường
-                </td>
-                <td>
-                  phục vụ
-                </td>
-                <td>
-                  <label class="badge badge-gradient-info">9 , 10 , 11 , 12</label>
-                </td>
-                <td>
-                  Gái
-                </td>
-                <td>
-                  QN-001
+                  {{row.phone}}
                 </td>
               </tr>
             </tbody>

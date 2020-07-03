@@ -29,10 +29,7 @@
     "jquery": "^3.4.1",
     "ng2-charts": "^2.3.0",
     "ngx-bootstrap": "^5.6.1",
-<<<<<<< HEAD
-=======
     "ngx-infinite-scroll": "^9.0.0",
->>>>>>> ee8bb6a2a37e0a38e83681215b5495a5e09bf251
     "node-sass": "^4.13.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
