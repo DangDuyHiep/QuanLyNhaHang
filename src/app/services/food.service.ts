@@ -16,4 +16,7 @@ export class FoodService {
     console.log(this.api.urls.food);
     return this.http.get<[Food]>(this.api.urls.food);
   }
+  getById(id: number): Observable<Food> {
+    return this.http.get<Food>(this.api.urls.food +`/${id}`);
+  }
 }

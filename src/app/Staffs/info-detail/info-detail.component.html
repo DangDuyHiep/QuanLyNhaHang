@@ -49,43 +49,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>canh cá riêu hồng</td>
-                        <td data-th="Quantity"><input class="form-control text-center" value="1"
+                    <tr *ngFor="let row of tables; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{row.name}}</td>
+                        <td data-th="Quantity"><input class="form-control text-center" value="{{row.quantity}}"
                                 type="number">
                         </td>
-                        <td>210.000&nbsp;₫</td>
+                        <td>{{row.price}}&nbsp;₫</td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Lẩu Bò Bắc Ninh</td>
-                        <td data-th="Quantity"><input class="form-control text-center" value="1"
-                                type="number">
-                        </td>
-                        <td>250.000&nbsp;₫</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td data-th="Quantity">
-                        </td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td data-th="Quantity">
-                        </td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td data-th="Quantity">
-                        </td>
-                        <td></td>
-                    </tr>
+                    
                 </tbody>
             </table>
             <nav class="navbar navbar-light bg-light">
@@ -106,11 +78,9 @@
                     <div class="col-md-4 col-sm-3 col-xs-12 product-resize product-item-box fixheight"
                         style="height: auto;" *ngFor="let row of foods; let i = index">
                         <div class="product-item">
-                            <div class="image image-resize img-fluid" style="height: auto;">
-                                <a href="" title=" ">
-                                    <img src="../../../assets/images/foods/{{row.foo_Id}}.jpg"
+                            <div class="image image-resize img-fluid" >
+                                <img src="../../../assets/images/foods/{{row.foo_Id}}.jpg" (click)="select(row.id)"
                                         class="img-responsive mg-fluid">
-                                </a>
                                 <span class="bg-warning d-inline-block mt-3">5<i class="fas fa-star"
                                         style="color: yellow;"></i></span>
                             </div>

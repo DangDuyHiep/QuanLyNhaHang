@@ -9,6 +9,11 @@ import { Food } from 'src/app/Models/food';
   styleUrls: ['./staffs-info.component.css']
 })
 export class StaffsInfoComponent implements OnInit {
+  @ViewChild('staticTabs', { static: false }) staticTabs: TabsetComponent;
+ 
+  disableEnable() {
+    this.staticTabs.tabs[2].disabled = !this.staticTabs.tabs[2].disabled;
+  }
   foods: Food[] = [];
 
   constructor(private foodService: FoodService) { }
