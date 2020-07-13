@@ -38,18 +38,18 @@
                         <div class="col-sm-6">
                             <div class="row justify-content-between">
                                 <div class="col-5 ">
-                                    <button class="btn btn-primary w-100 height-100" type="button" [routerLink]="['/staffs/staffs-info',1]" routerLinkActive="router-link-active" ><h3>Bàn 1</h3></button>
+                                    <button class="btn btn-primary w-100 height-100" [ngClass]="{'selected': listTable[1] != 0 && listTable[1] != null }" type="button" [routerLink]="['/staffs/staffs-info',1]" routerLinkActive="router-link-active" (click)="select(1)" #table1><h3>Bàn 1</h3></button>
                                 </div>
                                 <div class="col-5 ">
-                                    <button class="btn btn-primary w-100 height-100" type="button" [routerLink]="['/staffs/staffs-info',2]" routerLinkActive="router-link-active"><h3>Bàn 2</h3></button>
+                                    <button class="btn btn-primary w-100 height-100" [ngClass]="{'selected': listTable[2] != 0 && listTable[2] != null }" type="button" [routerLink]="['/staffs/staffs-info',2]" routerLinkActive="router-link-active" (click)="select(2)" #table2><h3>Bàn 2</h3></button>
                                 </div>
                             </div>
                             <div class="row mt-5 justify-content-between">
                                 <div class="col-5 ">
-                                    <button class="btn btn-primary w-100 height-100" type="button" [routerLink]="['/staffs/staffs-info',3]" routerLinkActive="router-link-active"><h3>Bàn 3</h3></button>
+                                    <button class="btn btn-primary w-100 height-100" [ngClass]="{'selected': listTable[3] != 0 && listTable[3] != null }" type="button" [routerLink]="['/staffs/staffs-info',3]" routerLinkActive="router-link-active" (click)="select(3)" #table3><h3>Bàn 3</h3></button>
                                 </div>
                                 <div class="col-5 ">
-                                    <button class="btn btn-primary w-100 height-100" type="button" [routerLink]="['/staffs/staffs-info',4]" routerLinkActive="router-link-active"><h3>Bàn 4</h3></button>
+                                    <button class="btn btn-primary w-100 height-100" [ngClass]="{'selected': listTable[4] != 0 && listTable[4] != null }" type="button" [routerLink]="['/staffs/staffs-info',4]" routerLinkActive="router-link-active" (click)="select(4)" #table4><h3>Bàn 4</h3></button>
                                 </div>
                             </div>
                         </div>

@@ -12,7 +12,8 @@ const routes: Routes = [
   { path: 'apps', loadChildren: () => import('./apps/apps.module').then(m => m.AppsModule) },
   { path: 'user-pages', loadChildren: () => import('./user-pages/user-pages.module').then(m => m.UserPagesModule) },
   { path: 'error-pages', loadChildren: () => import('./error-pages/error-pages.module').then(m => m.ErrorPagesModule) },
-  { path: 'staffs', loadChildren: () => import('./Staffs/staffs.module').then(m => m.StaffsModule) }
+  { path: 'staffs', loadChildren: () => import('./Staffs/staffs.module').then(m => m.StaffsModule) },
+  
 ];
 
 @core.NgModule({

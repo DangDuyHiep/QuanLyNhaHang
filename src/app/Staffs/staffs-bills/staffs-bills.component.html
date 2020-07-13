@@ -24,95 +24,69 @@
         </div>
     </nav>
 </div>
-<div class="limit ml-5 mt-2">
-    <span>Bàn</span>
-    <select id="lblimit" name="lblimit" class="nb_item"
-        onchange="window.location.href = this.options[this.selectedIndex].value">
-        <option selected="selected" value="?limit=20">1</option>
-        <option value="?limit=50">2</option>
-        <option value="?limit=100">3</option>
-        <option value="?limit=250">4</option>
-        <option value="?limit=500">5</option>
-        <option value="?limit=100">6</option>
-        <option value="?limit=250">7</option>
-        <option value="?limit=500">8</option>
-    </select>
-</div>
-<h2 class="text-center mt-5">Thanh Toán Hóa Đơn</h2>
-<div class="container">
-    <table id="cart" class="table table-hover table-condensed">
-        <thead>
-            <tr>
-                <th style="width:40%">Tên món ăn</th>
-                <th style="width:15%">Giá</th>
-                <th style="width:8%">Số lượng</th>
-                <th style="width:22%" class="text-center">Thành tiền</th>
-                <th style="width:15%"> </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td data-th="Product">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h6 class="nomargin">Lẩu cá hú Bắc Kinh </h6>
-                            <p>size M</p>
-                        </div>
-                        <div class="col-sm-6 hidden-xs"><img src="img/la001.png" alt="" class="img-responsive"
-                                width="140">
-                        </div>
-                    </div>
-                </td>
-                <td data-th="Price">320.000 đ</td>
-                <td data-th="Quantity">1
-                </td>
-                <td data-th="Subtotal" class="text-center">320.000 đ</td>
-                <td class="actions" data-th="">
-                    <button class="btn btn-info btn-sm"><i class="fa fa-edit"></i>
-                    </button>
-                    <button class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i>
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td data-th="Product">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h6 class="nomargin">Lẩu Khô Nam Định</h6>
-                            <p>size S</p>
-                        </div>
-                        <div class="col-sm-6 hidden-xs"><img src="img/la002.png" alt="" class="img-responsive"
-                                width="140">
-                        </div>
-                    </div>
-                </td>
-                <td data-th="Price">230.000 đ</td>
-                <td data-th="Quantity">1
-                </td>
-                <td data-th="Subtotal" class="text-center">230.000 đ</td>
-                <td class="actions" data-th="">
-                    <button class="btn btn-info btn-sm"><i class="fa fa-edit"></i>
-                    </button>
-                    <button class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i>
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Thêm món ăn</a>
-                </td>
-                <td colspan="2" class="hidden-xs"> </td>
-                <td class="hidden-xs text-center"><strong>Tổng tiền 550.000 đ</strong>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
-                        Thanh Toán<i class="fas fa-arrow-circle-right" style="color: silver;"></i>
-                    </button>
-                </td>
-            </tr>
-        </tfoot>
-    </table>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2">
+            <label class="title">Bàn</label>
+            <div class="form-group d-inline-block">
+                <select class="form-control select" >
+                    <option value="{{item}}" *ngFor="let item of list"><a [routerLink]="['/staffs/staffs-bill',item]" routerLinkActive="router-link-active" >{{item}}</a></option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8 m-auto">
+            <h2 class="text-center">Hóa Đơn Thanh Toán</h2>
+            <table id="cart" class="table table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th style="width:40%">Tên món ăn</th>
+                        <th style="width:15%">Giá</th>
+                        <th style="width:8%">Số lượng</th>
+                        <th style="width:22%" class="text-center">Thành tiền</th>
+                        <th style="width:15%"> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let food of table">
+                        <td data-th="Product">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h6 class="nomargin"> {{food.name}} </h6>
+                                    <p></p>
+                                </div>
+                                <div class="col-sm-6 hidden-xs"><img src="img/la001.png" alt="" class="img-responsive"
+                                        width="140">
+                                </div>
+                            </div>
+                        </td>
+                        <td data-th="Price">{{food.price}}</td>
+                        <td data-th="Quantity">{{food.quantity}}
+                        </td>
+                        <td data-th="Subtotal" class="text-center">{{food.total}}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td><a [routerLink]="['/staffs/staffs-info', tableId]" routerLinkActive="router-link-active"
+                                class="btn btn-warning"><i class="fa fa-angle-left"></i> Thêm món ăn</a>
+                        </td>
+                        <td colspan="2" class="hidden-xs"> </td>
+                        <td class="hidden-xs text-center"><strong>Tổng tiền {{cash}} đ</strong>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-success width-190" data-toggle="modal"
+                                data-target="#exampleModal">
+                                Thanh Toán
+                            </button>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
 </div>
 
 <!-- Modal -->

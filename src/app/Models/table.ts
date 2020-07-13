@@ -1,6 +1,7 @@
 export interface Table {
-    productId: number;
-    name: string;
-    quantity: number;
-    price: number;
+    productId: number,
+    name: string,
+    quantity: number,
+    price: number,
+    total: number
 }

@@ -9,7 +9,9 @@ export class ApiService {
   urls = {
     food: this.baseUrl + 'Foods',
     student : this.baseUrl + 'students-free.php',
-    reader: this.baseUrl + 'reader.php'
+    reader: this.baseUrl + 'reader.php',
+    time: this.baseUrl + 'Foods/current-time',
+    bill: this.baseUrl + 'Bills'
   };
   constructor() { }
 }
