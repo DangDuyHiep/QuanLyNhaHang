@@ -1,7 +1,6 @@
-import { NgModule } from '@angular/core';
+import * as core from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './Overviews/Overviews.component';
-
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -13,9 +12,11 @@ const routes: Routes = [
   { path: 'apps', loadChildren: () => import('./apps/apps.module').then(m => m.AppsModule) },
   { path: 'user-pages', loadChildren: () => import('./user-pages/user-pages.module').then(m => m.UserPagesModule) },
   { path: 'error-pages', loadChildren: () => import('./error-pages/error-pages.module').then(m => m.ErrorPagesModule) },
+  { path: 'staffs', loadChildren: () => import('./Staffs/staffs.module').then(m => m.StaffsModule) },
+  
 ];
 
-@NgModule({
+@core.NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
