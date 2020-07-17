@@ -77,8 +77,7 @@
                         <td class="hidden-xs text-center"><strong>Tổng tiền {{cash}} đ</strong>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-success width-190" data-toggle="modal"
-                                data-target="#exampleModal">
+                            <button type="button" class="btn btn-success width-190" (click)="showModal()">
                                 Thanh Toán
                             </button>
                         </td>
@@ -90,81 +89,22 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <img src="img/lo.png" alt="">
-            </div>
-            <div class="modal-body">
-                <h6>Address: Nguyễn Văn Bảo, Gò Vấp.</h6>
-                <h6>tel : 0383881717</h6>
-                <h2 class="text-center">Hóa Đơn Thanh Toán</h2>
-                <p class="text-center">số HĐ:45645123</p>
-                <p>-----------------------------------------------------------------------</p>
-                <table class="table table-borderless">
-                    <thead>
-                        <tr>
-                            <th scope="col">Stt</th>
-                            <th scope="col">Tên Món</th>
-                            <th scope="col">Số lượng</th>
-                            <th scope="col">Đơn giá</th>
-                            <th scope="col">Thành tiền</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Lẩu cá hú bắc kinh</td>
-                            <td>1</td>
-                            <td>320.000&nbsp;đ</td>
-                            <td>320.000&nbsp;đ</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Lẩu khô nam định</td>
-                            <td>1</td>
-                            <td>230.000&nbsp;đ</td>
-                            <td>230.000&nbsp;đ</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p>-----------------------------------------------------------------------</p>
-                <!---->
-                <table class="table table-borderless">
-                    <tbody>
-                        <tr>
-                            <th scope="col">Tổng cộng: </th>
-                            <td class="text-right">550.000&nbsp;đ</td>
-                        </tr>
-                        <tr>
-                            <th scope="col">Tiền khách trả: </th>
-                            <td class="text-right">550.000&nbsp;đ</td>
-                        </tr>
-                        <tr>
-                            <th scope="col">Tiền hoàn lại khách: </th>
-                            <td class="text-right">0&nbsp;đ</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p>-----------------------------------------------------------------------</p>
-                <h4>Xin Cảm Ơn Quý Khách!</h4>
-                <h6>Thu ngân: Phạm Hải Đường</h6>
-                <p>ngày : 28/06/2020 &nbsp;&nbsp;thời gian: 10:10</p>
-                <p>-----------------------------------------------------------------------</p>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-            </div>
-        </div>
+<div class="modal fade" bsModal #confirmModal="bs-modal" [config]="{backdrop: 'static'}"
+     tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h3 class="text-center">Hoàn Tất Thanh Toán?</h3>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="hideModal()">Hủy</button>
+        <button class="btn btn-success" (click)="pay()">Hoàn Tất</button>
+      </div>
     </div>
+  </div>
 </div>
