@@ -3,6 +3,8 @@ import { FoodService } from 'src/app/services/food.service';
 import { Food } from 'src/app/Models/food';
 import { Table } from 'src/app/Models/table';
 import { ActivatedRoute } from '@angular/router';
+import { FoodForKitchen } from 'src/app/Models/food-for-kitchen';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-info-detail',
@@ -10,17 +12,19 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./info-detail.component.scss']
 })
 export class InfoDetailComponent implements OnInit {
-  @ViewChild('test', { static: false }) el: ElementRef;
+  @ViewChild('confirmModal', { static: true }) editModal: ModalDirective;
   foods: Food[] = [];
   table: Table[] = [];
   tableId = this.route.snapshot.paramMap.get('id');
+  listFood: FoodForKitchen[] = [];
+  productId: number;
 
   constructor(private foodService: FoodService, private route: ActivatedRoute) { }
 
   ngOnInit() {
 
     this.loadData();
-    this.table = JSON.parse(localStorage.getItem(`table${this.tableId}`));
+    this.table = JSON.parse(localStorage.getItem(`table${this.tableId}`) || '[]');
   }
 
   loadData() {
@@ -49,6 +53,23 @@ export class InfoDetailComponent implements OnInit {
     e.preventDefault();
 
     let table = this.checkExist(id);
+    let aFood: FoodForKitchen = {} as FoodForKitchen;
+
+    this.listFood = JSON.parse(localStorage.getItem('listFood') || '[]');
+    this.foodService.getById(id).subscribe(res => {
+      aFood.name = res.foo_Name;
+      aFood.status = 0;
+      aFood.table = this.tableId;
+      this.foodService.getTime().subscribe(res => {
+        let date = new Date(res.timeNow);
+        let hour = date.getHours();
+        let min = date.getMinutes();
+        let sec = date.getSeconds();
+        aFood.time = hour + ':' + min + ':' + sec;
+        this.listFood.push(aFood);
+        localStorage.setItem('listFood', JSON.stringify(this.listFood));
+      });
+    });
 
     if (table) {
       table.quantity++;
@@ -72,7 +93,6 @@ export class InfoDetailComponent implements OnInit {
   increase(e: any, id: number) {
     e.preventDefault();
     let table = this.checkExist(id);
-    
 
     table.quantity++;
     table.total = table.price * table.quantity;
@@ -82,7 +102,6 @@ export class InfoDetailComponent implements OnInit {
   decrease(e: any, id: number) {
     e.preventDefault();
     let table = this.checkExist(id);
-    
 
     if (table.quantity > 1) {
       table.quantity--;
@@ -91,14 +110,23 @@ export class InfoDetailComponent implements OnInit {
     }
   }
 
-  cancel(e: any, id: number) {
-    e.preventDefault();
-    let table = this.checkExist(id);
+  cancel() {
+    let table = this.checkExist(this.productId);
     let index = this.table.indexOf(table);
-    
 
-    this.table.splice(index,1);
+    this.table.splice(index, 1);
     localStorage.setItem(`table${this.tableId}`, JSON.stringify(this.table));
+    this.hideModal();
+  }
+
+  hideModal() {
+    this.editModal.hide();
+  }
+
+  showModal(e: Event, id: number) {
+    e.preventDefault();
+    this.editModal.show();
+    this.productId = id;
   }
 
 }

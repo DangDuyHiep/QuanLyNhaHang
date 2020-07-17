@@ -3,5 +3,6 @@ export interface Table {
     name: string,
     quantity: number,
     price: number,
-    total: number
+    total: number,
+    status: number
 }
