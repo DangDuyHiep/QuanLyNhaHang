@@ -10,7 +10,8 @@ export class ApiService {
     food: this.baseUrl + 'Foods',
     time: this.baseUrl + 'Foods/current-time',
     bill: this.baseUrl + 'Bills',
-    detailBill: this.baseUrl + 'DetailBills'
+    detailBill: this.baseUrl + 'DetailBills',
+    dateToDate: this.baseUrl + 'Bills/date-to-date'
   };
   constructor() { }
 }

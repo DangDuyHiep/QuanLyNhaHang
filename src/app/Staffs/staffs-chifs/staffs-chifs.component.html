@@ -24,52 +24,48 @@
     <table class="table table-hover table-dark">
         <thead>
             <tr>
-                <th scope="col">#Stt</th>
-                <th scope="col">Tên món</th>
-                <th scope="col">Chưa làm</th>
-                <th scope="col">Đang làm</th>
-                <th scope="col">Đã hoàn thành</th>
-                <th scope="col">thời gian</th>
-                <th></th>
+                <th >#Stt</th>
+                <th>Tên món</th>
+                <th>Số lượng</th>
+                <th class="text-center">Đang làm</th>
+                <th class="text-center">Đã hoàn thành</th>
+                <th>Thời gian</th>
+                <th> Bàn </th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Lẩu cá hú bắc kinh</td>
-                <td>&nbsp;&nbsp;
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                        value="1">
+            <tr *ngFor="let item of listFoods; let i = index">
+                <td>{{ i+1 }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>
+                    <div *ngIf="item.status == 1; else elseBlock" class="center">
+                        <input class="form-check-input m-0" type="radio" name="do{{ i }}" (click)="doing(item.id)" checked>
+                    </div>
+                    <ng-template #elseBlock>
+                        <div class="center">
+                            <input class="form-check-input m-0" type="radio" name="do{{ i }}"
+                        (click)="doing(item.id)">
+                        </div>
+                    </ng-template>
                 </td>
-                <td>&nbsp;&nbsp;
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                        value="1">
+                <td>
+                    <div *ngIf="item.status == 2; else elseBlock2" class="center">
+                        <input class="form-check-input m-0" type="radio" name="do{{ i }}" id="inlineRadio1" (click)="done(item.id)"
+                        checked>
+                    </div>
+                    <ng-template #elseBlock2>
+                        <div class="center">
+                            <input class="form-check-input m-0" type="radio" name="do{{ i }}" (click)="done(item.id)"
+                        [value]="1">
+                        </div>
+                    </ng-template>
+                    
                 </td>
-                <td>&nbsp;&nbsp;
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                        value="1">
-                </td>
-                <td>12:10:34</td>
-                <td><i class="far fa-share-square"></i></td>
+                <td>{{ item.timeString }}</td>
+                <td>{{ item.table }}</td>
             </tr>
-            <tr>
-                <td>2</td>
-                <td>Lẩu khô nam định</td>
-                <td>&nbsp;&nbsp;
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                        value="1">
-                </td>
-                <td>&nbsp;&nbsp;
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                        value="1">
-                </td>
-                <td>&nbsp;&nbsp;
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                        value="1">
-                </td>
-                <td>12:11:34</td>
-                <td><i class="far fa-share-square"></i></td>
-            </tr> 
+
         </tbody>
     </table>
 </div>

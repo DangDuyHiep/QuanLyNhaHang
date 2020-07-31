@@ -7,6 +7,12 @@ export interface Bill {
     exp_Status: number,
     table: any,
     employee: any,
-    detailExportOrders: any
+    detailExportOrders: any,
+    exp_Total: number
+}
+
+export interface DateToDate {
+    fromDate: Date,
+    toDate: Date
 }
 
