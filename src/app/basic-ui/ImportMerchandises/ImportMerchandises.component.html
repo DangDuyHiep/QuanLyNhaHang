@@ -4,8 +4,8 @@
   </h3>
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="javascript:;">Thêm phiếu nhập</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Dropdowns</li>
+      <button type="button" class="btn bg-success" data-toggle="modal" data-target="#add" (click)="showmodal(0)"><i
+        class="fas fa-plus"></i>Thêm hàng hóa</button>
     </ol>
   </nav>
 </div>
@@ -15,55 +15,43 @@
       <div class="card-body">
         <h4 class="card-title">Danh sách phiếu nhập</h4>
         <div class="table-responsive">
-          <table class="table">
+          <table class="table table-striped" style="text-align: center;">
             <thead>
               <tr>
                 <th>
                       <input type="checkbox" aria-label="Checkbox for following text input">
                 </th>
-                <th>#</th>
+                <th>STT</th>
                 <th>Mã nhập hàng</th>
                 <th>Thời gian nhập</th>
                 <th>Nhà cung cấp</th>
-                <th>Tổng số lượng</th>
-                <th>Tổng tiền hàng</th>
                 <th>Người tạo</th>
-                <th>Trạng thái</th>
                 <th>Thao tác</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let row of importmerchandises; let i = index">
                 <td>
                   <input type="checkbox" aria-label="Checkbox for following text input">
                 </td>
                 <td>
-                  1
+                  {{i + 1}}
                 </td>
                 <td>
-                  HD001
+                  {{row.imp_Id}}
                 </td>
                 <td>
-                  G2-001
+                  {{row.imp_Date}}
                 </td>
                 <td>
-                  17:30
+                  {{row.sup_Id}}
                 </td>
                 <td>
-                  22:30
+                  {{row.epl_Id}}
                 </td>
                 <td>
-                  100$
-                </td>
-                <td>
-                  5$
-                </td>
-                <td>
-                  Đãng thanh toán
-                </td>
-                <td>
-                  <a [routerLink]="['/edit-employee']"><i class="far fa-edit text-success"></i></a>
-                  <a href=""><i class="fas fa-trash-alt text-danger pl-1"></i></a>
+                  <button type="button" class="btn btn-link" (click)="showmodal(row.id)"><i class="far fa-edit text-success"></i></button>
+                  <button type="button" class="btn btn0link" (click)="delete(row.id)"><i class="fas fa-trash-alt text-danger pl-1"></i></button>
                 </td>
               </tr>
             </tbody>
@@ -73,3 +61,60 @@
     </div>
   </div>
 </div>
+ <!--modal-->
+ <div class="modal fade" bsModal #editModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog"
+ aria-labelledby="dialog-static-name">
+ <div class="modal-dialog">
+   <div class="modal-content">
+       <div class="modal-header">
+       <h5 class="modal-title" id="staticBackdropLabel">{{action}} sinh vien </h5>
+       <button type="button" class="close pull-right" aria-label="Close" (click)="hidemodal()">
+         <span aria-hidden="true">&times;</span>
+       </button>
+     </div>
+     <div class="modal-body">
+       <div class="form-group row pt-4">
+         <label for="txtid" class="col-4 col-form-label repuire text-dark" style="text-align: left;"><strong>
+             ID</strong></label>
+         <div class="col-8">
+           <input type="text" class="form-control" id="txtid" [(ngModel)]="aIpmerchandises.epl_Id" name="txtid">
+         </div>
+       </div>
+       <div class="form-group row pb-2">
+         <label for="txtfirstName" class="col-4 col-form-label repuire text-dark"
+           style="text-align: left;"><strong>firstName</strong></label>
+         <div class="col-8">
+           <input type="text" class="form-control" id="txtfirstName" [(ngModel)]="aIpmerchandises.imp_Date"
+             name="txtfirstName">
+         </div>
+       </div>
+       <div class="form-group row pb-2">
+         <label for="txtlastname" class="col-4 col-form-label repuire text-dark"
+           style="text-align: left;"><strong>lastname</strong></label>
+         <div class="col-8">
+           <input type="text" class="form-control" id="txtlastname" [(ngModel)]="aIpmerchandises.imp_Id" name="txtlastname">
+         </div>
+       </div>
+       <div class="form-group row pb-2">
+         <label for="txtgmail" class="col-4 col-form-label repuire text-dark"
+           style="text-align: left;"><strong>Gmail</strong></label>
+         <div class="col-8">
+           <input type="text" class="form-control" id="txtgmail" [(ngModel)]="aIpmerchandises.imp_Id" name="txtgmail">
+         </div>
+       </div>
+       <div class="form-group row pb-2">
+         <label for="txtphone" class="col-4 col-form-label repuire text-dark"
+           style="text-align: left;"><strong>Phone</strong></label>
+         <div class="col-8">
+           <input type="text" class="form-control" id="txtphone" [(ngModel)]="aIpmerchandises.id" name="txtphone">
+         </div>
+       </div>
+     </div>
+     <div class="modal-footer">
+       <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="hidemodal()">Close</button>
+       <button type="button" class="btn btn-primary" (click)='save()'>Save</button>
+     </div>
+   </div>
+ </div>
+</div>
+

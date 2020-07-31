@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { warehouse } from 'src/app/models/datatypes';
+import { Router } from '@angular/router';
+import { WarehouseService } from 'src/app/services/warehouse.service';
 
 @Component({
   selector: 'app-modals',
@@ -8,21 +11,19 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ModalsComponent implements OnInit {
 
-  constructor(private modalService: NgbModal) {}
+  aWarehouse : warehouse = {} as warehouse;
+  constructor(private modalService: NgbModal , private router:Router , private warehouseService : WarehouseService) {}
 
-  ngOnInit() {
+  warehouse : warehouse[] = [];
+  ngOnInit() : void{
+    this.loadData();
   }
 
-  openModal( exampleModalContent ) {
-    this.modalService.open( exampleModalContent, { size : 'lg' } );
+  loadData(){
+    this.warehouseService.getAll().subscribe(res => {
+      this.warehouse = res.data;
+    });
   }
 
-  openMediumModal( mediumModalContent ) {
-    this.modalService.open( mediumModalContent );
-  }
-
-  openSmallModal( smallModalContent ) {
-    this.modalService.open( smallModalContent, { size : 'sm' } );
-  }
 
 }

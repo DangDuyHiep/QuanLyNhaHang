@@ -12,6 +12,10 @@ import { ProgressbarComponent } from './progressbar/progressbar.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { TooltipsComponent } from './tooltips/tooltips.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { FormsModule} from '@angular/forms';
+import { ModalModule } from "ngx-bootstrap/modal";
+import { HttpClientModule } from '@angular/common/http';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 const routes: Routes = [
   { path: 'accordions', component: AccordionsComponent },
@@ -32,6 +36,10 @@ const routes: Routes = [
   imports: [
     CommonModule,
     NgbModule,
+    FormsModule,
+    HttpClientModule,
+    NgxPaginationModule,
+    ModalModule.forChild(),
     RouterModule.forChild(routes),
   ]
 })

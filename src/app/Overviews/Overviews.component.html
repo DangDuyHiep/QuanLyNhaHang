@@ -14,49 +14,38 @@
     </ul>
   </nav>
 </div>
-<!--<div class="form-group row">
-  <div class="col-3">
-    <div class="form-group row">
-      <label for="inputTime" class="col-sm-4">Ngày sinh</label>
-      <div class="col-sm-8">
-        <select id="inputTime" class="form-control" style="width: 200px;">
-          <option selected>Ngày</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-        </select>
-      </div>
-    </div>
-  </div>
-  <div class="col-3">
-    <div class="form-group row">
-      <label for="inputStartDay" class="col-sm-4 col-form-label repuire">Start day</label>
-      <div class="col-sm-8">
-          <input type="text" class="form-control" id="inputStartDay" placeholder="" value="20/6/2020" disabled>
-      </div>
-    </div>
-  </div>
-  <div class="col-3">
-    <div class="form-group row">
-      <label for="inputStartDay" class="col-sm-4 col-form-label repuire">End date</label>
-      <div class="col-sm-8">
-          <input type="text" class="form-control" id="inputStartDay" placeholder="" value="20/6/2020" disabled>
-      </div>
-    </div>
-  </div>
-</div>-->
 <div class="row">
+  <div class="col-12 grid-margin">
+    <form class="row">
+      <div class="form-group row  col-4">
+        <label for="inputFromDate" class="col-4 col-form-label">Từ ngày :</label>
+        <div class="col-sm-8">
+          <input type="date" class="form-control" id="inputFromDate" [(ngModel)] = "aDateTo.fromDate" name="fromDate">
+        </div>
+      </div>
+      <div class="form-group row  col-4">
+        <label for="inputToDate" class="col-4 col-form-label">Đến ngày :</label>
+        <div class="col-sm-8">
+          <input type="date" class="form-control" id="inputToDate" [(ngModel)] = "aDateTo.toDate" name="toDate">
+        </div>
+      </div>
+      <div class="form-group row col-4">
+        <button type="button" class="btn bg-success" data-target="#add" (click)="showList()" style="height: 34px; text-align: center;"> Chọn </button>
+      </div>
+      <!-- <div class="col-12">
+        <button type="button" class="btn bg-success" data-toggle="modal" data-target="#add" (click)="showList()"> Chọn </button>
+      </div> -->
+    </form>
+  </div>
+
   <div class="col-md-4 stretch-card grid-margin">
     <div class="card bg-gradient-danger card-img-holder text-white">
       <div class="card-body">
         <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-        <h4 class="font-weight-normal mb-3">Tổng doanh thu
+        <h4 class="font-weight-normal mb-3">Doanh thu trong ngày
           <i class="mdi mdi-chart-line mdi-24px float-right"></i>
         </h4>
-        <h2 class="mb-5">$ 15,0000</h2>
+        <h2 class="mb-5">{{Total}} $</h2>
         <h6 class="card-text">Tăng 10% </h6>
       </div>
     </div>
@@ -68,7 +57,7 @@
         <h4 class="font-weight-normal mb-3">Số bàn đang phục vụ
           <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
         </h4>
-        <h2 class="mb-5">10 / 50</h2>
+        <h2 class="mb-5"> {{CountWkTB}} / {{countTB}}</h2>
       </div>
     </div>
   </div>
@@ -76,7 +65,7 @@
     <div class="card bg-gradient-success card-img-holder text-white">
       <div class="card-body">
         <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-        <h4 class="font-weight-normal mb-3">Số bàn đã hoàng thành
+        <h4 class="font-weight-normal mb-3">Số bàn đã hoàn thành
           <i class="mdi mdi-diamond mdi-24px float-right"></i>
         </h4>
         <h2 class="mb-5">60 bàn</h2>
@@ -84,135 +73,41 @@
     </div>
   </div>
 </div>
-<!--<div class="row">
-  <div class="col-lg-7 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex flex-wrap justify-content-between">
-          <h4 class="card-title">Visit And Sales Statistics</h4>
-          <div id="visit-sale-chart-legend" class="rounded-legend legend-horizontal">
-            <ul>
-              <li>
-                <span class="legend-dots"></span>CHN
-              </li>
-              <li>
-                <span class="legend-dots"></span>USA
-              </li>
-              <li class="mr-0">
-                <span class="legend-dots"></span>UK
-              </li>
-            </ul>
-          </div>
-        </div>
-        <canvas baseChart #visitSaleChart [chartType]="'bar'" [datasets]="visitSaleChartData"
-          [labels]="visitSaleChartLabels" [options]="visitSaleChartOptions" [colors]="visitSaleChartColors"></canvas>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-5 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Traffic Sources</h4>
-        <canvas baseChart [chartType]="'doughnut'" [datasets]="trafficChartData" [labels]="trafficChartLabels"
-          [options]="trafficChartOptions" [colors]="trafficChartColors"></canvas>
-        <div id="traffic-chart-legend" class="rounded-legend legend-vertical legend-bottom-left pt-4">
-          <ul>
-            <li>
-              <span class="legend-dots"></span>Search Engines
-              <span class="float-right">30%</span>
-            </li>
-            <li>
-              <span class="legend-dots"></span>Direct Click
-              <span class="float-right">30%</span>
-            </li>
-            <li>
-              <span class="legend-dots"></span>Bookmarks Click
-              <span class="float-right">40%</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>-->
 <div class="row">
   <div class="col-12 grid-margin">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Nhân viên làm việc vào ngày hôm nay</h4>
+        <h4>
+          Tổng doanh thu từ {{aDateTo.fromDate}} - {{aDateTo.toDate}}  :{{SumDateToDate}} $
+        </h4>
+        <h4 class="card-title">Danh sách hóa đơn :</h4>
         <div class="table-responsive">
-          <table class="table">
+          <table class="table table-striped">
             <thead>
               <tr>
-                <th>Hình ảnh</th>
-                <th>Tên nhân viên</th>
-                <th>Vị trí làm việc</th>
-                <th>Số bàn làm việc</th>
-                <th>Giới tình</th>
-                <th>Mã nhân viên</th>
+                <th>STT</th>
+                <th>Bàn</th>
+                <th>Giảm giá</th>
+                <th>Tiền</th>
+                <th>Xem chi tiết</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let row of exportorder;let i = index">
                 <td>
-                  <img src="assets/images/faces/hinhthe.jpg" class="mr-2" alt="image">
+                  {{i + 1}}
                 </td>
                 <td>
-                  Dang Duy Hiep
+                  {{row.tab_Id}}
                 </td>
                 <td>
-                  Quản lý
+                  {{row.discount}}
                 </td>
                 <td>
-                  <label class="badge badge-gradient-success">1 , 2 , 3 , 4</label>
+                  {{row.total}}
                 </td>
                 <td>
-                  Nam
-                </td>
-                <td>
-                  DB-001
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <img src="assets/images/faces/lockute.jpg" class="mr-2" alt="image">
-
-                </td>
-                <td>
-                  Huynh Minh Loc
-                </td>
-                <td>
-                  phục vụ
-                </td>
-                <td>
-                  <label class="badge badge-gradient-info">5 , 6 , 7 , 8</label>
-                </td>
-                <td>
-                  Gái
-                </td>
-                <td>
-                  QN-001
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <img src="assets/images/faces/duongkute.jpg" class="mr-2" alt="image">
-
-                </td>
-                <td>
-                  Phạm Hải Đường
-                </td>
-                <td>
-                  phục vụ
-                </td>
-                <td>
-                  <label class="badge badge-gradient-info">9 , 10 , 11 , 12</label>
-                </td>
-                <td>
-                  Gái
-                </td>
-                <td>
-                  QN-001
+                  <button type="button" class="btn btn-link" (click)="showmodal(row.id)"><i class="far fa-edit text-success"></i></button>
                 </td>
               </tr>
             </tbody>
@@ -223,6 +118,101 @@
   </div>
 </div>
 <div class="row">
+  <div class="col-12 grid-margin">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Nhân viên làm việc vào ngày hôm nay</h4>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>STT</th>
+                <th>Hình ảnh</th>
+                <th>Tên nhân viên</th>
+                <th>Vị trí làm việc</th>
+                <th>Số bàn làm việc</th>
+                <th>Giới tình</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of employee;let i = index">
+                <td>
+                  {{i + 1}}
+                </td>
+                <td>
+                  <img src="assets/images/faces/hinhthe.jpg" class="mr-2" alt="image">
+                </td>
+                <td>
+                  {{row.lastName}} {{row.firstName}}
+                </td>
+                <td>
+                  {{row.position}}
+                </td>
+                <td>
+                  <label class="badge badge-gradient-success">1 , 2 , 3 , 4</label>
+                </td>
+                <td>
+                  <div *ngIf="row.gender == false; else elseBlock"><i class="fas fa-male" style="color: blue;"></i>
+                  </div>
+                  <ng-template #elseBlock><i class="fas fa-female" style="color: pink;"></i></ng-template>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" bsModal #editModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog"
+  aria-labelledby="dialog-static-name">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">{{action}} </h5>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hidemodal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row pt-4">
+          <label for="txtid" class="col-4 col-form-label repuire text-dark" style="text-align: left;"><strong>
+              Mã hoa don</strong></label>
+          <div class="col-8">
+            <input type="text" class="form-control" id="txtid" [(ngModel)]="aDetail.id" name="txtid">
+          </div>
+        </div>
+        <div class="form-group row pb-2">
+          <label for="txtfirstName" class="col-4 col-form-label repuire text-dark"
+            style="text-align: left;"><strong>Tên món ăn</strong></label>
+          <div class="col-8">
+            <input type="text" class="form-control" id="txtfirstName" [(ngModel)]="aDetail.foo_Id"
+              name="txtfirstName">
+          </div>
+        </div>
+        <div class="form-group row pb-2">
+          <label for="txtlastname" class="col-4 col-form-label repuire text-dark"
+            style="text-align: left;"><strong>Số lượng</strong></label>
+          <div class="col-8">
+            <input type="text" class="form-control" id="txtlastname" [(ngModel)]="aDetail.quantity"
+              name="txtlastname">
+          </div>
+        </div>
+          <div class="form-group row pb-2">
+            <label for="txtgmail" class="col-4 col-form-label repuire text-dark"
+            style="text-align: left;"><strong>Tình trạng</strong></label>
+          <div class="col-8">
+            <input type="text" class="form-control" id="txtgmail" [(ngModel)]="aDetail.deExp_Status" name="txtgmail">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="hidemodal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="row">
   <div class="col-md-5 grid-margin stretch-card">
     <div class="card">
       <ngb-datepicker #dp [(ngModel)]="date" (navigate)="date = $event.next" class="w-100 border-0"></ngb-datepicker>
@@ -408,4 +398,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
