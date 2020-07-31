@@ -21,6 +21,11 @@ export class ApiService {
     listDateToDate : this.baseUrl + 'EplOverviews/listDateToDate',
     exportOrder : this.baseUrl + 'ExportOrders',
     detailExport : this.baseUrl + 'DetailExportOrders',
+    time: this.baseUrl + 'Foods/current-time',
+    bill: this.baseUrl + 'Bills',
+    detailBill: this.baseUrl + 'DetailBills',
+    dateToDate: this.baseUrl + 'Bills/date-to-date'
+
   };
   constructor() { }
 }

@@ -1,3 +1,9 @@
-.red {
-    color: red;
+.selected {
+    background-color: green;;
+}
+.p-20 {
+    padding: 0 20px;
+}
+.w-150 {
+    width: 160px;
 }

@@ -7,6 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
 import {TablesModule} from './tables/tables.module';
 
+import { HttpClientModule } from '@angular/common/http';
+
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
@@ -22,6 +25,9 @@ import { EmloyeeComponent } from './Employee/emloyee/emloyee.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { RouterModule, Routes } from '@angular/router';
+import { FoodService } from './services/food.service';
+import { DefaultAdminComponent } from './default/default-admin/default-admin.component';
+import { DefaultStaffComponent } from './default/default-staff/default-staff.component';
 
 const routes: Routes = [
   { path: 'overviews', component: DashboardComponent }
@@ -39,6 +45,8 @@ const routes: Routes = [
     ContentAnimateDirective,
     EmloyeeEditComponent,
     EmloyeeComponent,
+    DefaultAdminComponent,
+    DefaultStaffComponent,
 
   ],
   imports: [
@@ -49,12 +57,13 @@ const routes: Routes = [
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     ChartsModule,
     TabsModule.forRoot(),
     ModalModule.forChild(),
     RouterModule.forChild(routes)
   ],
-  providers: [],
+  providers: [FoodService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
