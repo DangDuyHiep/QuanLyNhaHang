@@ -12,22 +12,22 @@ export class IpMerchandisesService {
 
   constructor(private http: HttpClient, private api: ApiService) { }
 
-  getAll(): Observable<RootObject<[importmerchandises]>> {
+  getAll(): Observable<[importmerchandises]> {
     /*get api */
-    return this.http.get<RootObject<[importmerchandises]>>(this.api.urls.student);
+    return this.http.get<[importmerchandises]>(this.api.urls.ImportOrder);
   }
 
-  get(id: number): Observable<RootObject<importmerchandises>> {
-    return this.http.get<RootObject<importmerchandises>>(`${this.api.urls.student}?id=${id}`);
+  get(id: number): Observable<importmerchandises> {
+    return this.http.get<importmerchandises>(`${this.api.urls.ImportOrder}?id=${id}`);
   }
 
-  add(data : importmerchandises): Observable<RootObject<importmerchandises>>{
-    return this.http.post<RootObject<importmerchandises>>(this.api.urls.student,data);
+  add(data : importmerchandises): Observable<importmerchandises>{
+    return this.http.post<importmerchandises>(this.api.urls.ImportOrder,data);
   }
-  update(data : importmerchandises): Observable<RootObject<importmerchandises>>{
-    return this.http.put<RootObject<importmerchandises>>(`${this.api.urls.student}?id=${data.id}`,data);
+  update(data : importmerchandises): Observable<importmerchandises>{
+    return this.http.put<importmerchandises>(`${this.api.urls.ImportOrder}?id=${data.id}`,data);
   }
-  delete(id : number): Observable<RootObject<null>>{
-    return this.http.delete<RootObject<null>>(`${this.api.urls.student}?id=${id}`);
+  delete(id : number): Observable<null>{
+    return this.http.delete<null>(`${this.api.urls.ImportOrder}?id=${id}`);
   }
 }

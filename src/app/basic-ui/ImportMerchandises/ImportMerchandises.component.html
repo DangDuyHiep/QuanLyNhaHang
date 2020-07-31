@@ -15,20 +15,17 @@
       <div class="card-body">
         <h4 class="card-title">Danh sách phiếu nhập</h4>
         <div class="table-responsive">
-          <table class="table">
+          <table class="table table-striped" style="text-align: center;">
             <thead>
               <tr>
                 <th>
                       <input type="checkbox" aria-label="Checkbox for following text input">
                 </th>
-                <th>#</th>
+                <th>STT</th>
                 <th>Mã nhập hàng</th>
                 <th>Thời gian nhập</th>
                 <th>Nhà cung cấp</th>
-                <th>Tổng số lượng</th>
-                <th>Tổng tiền hàng</th>
                 <th>Người tạo</th>
-                <th>Trạng thái</th>
                 <th>Thao tác</th>
               </tr>
             </thead>
@@ -38,28 +35,19 @@
                   <input type="checkbox" aria-label="Checkbox for following text input">
                 </td>
                 <td>
-                  {{row.stuId}}
+                  {{i + 1}}
                 </td>
                 <td>
-                  {{row.firstName}}
+                  {{row.imp_Id}}
                 </td>
                 <td>
-                  {{row.lastName}}
+                  {{row.imp_Date}}
                 </td>
                 <td>
-                  {{row.email}}
+                  {{row.sup_Id}}
                 </td>
                 <td>
-                  {{row.phone}}
-                </td>
-                <td>
-                  100$
-                </td>
-                <td>
-                  5$
-                </td>
-                <td>
-                  Đãng thanh toán
+                  {{row.epl_Id}}
                 </td>
                 <td>
                   <button type="button" class="btn btn-link" (click)="showmodal(row.id)"><i class="far fa-edit text-success"></i></button>
@@ -89,14 +77,14 @@
          <label for="txtid" class="col-4 col-form-label repuire text-dark" style="text-align: left;"><strong>
              ID</strong></label>
          <div class="col-8">
-           <input type="text" class="form-control" id="txtid" [(ngModel)]="aIpmerchandises.stuId" name="txtid">
+           <input type="text" class="form-control" id="txtid" [(ngModel)]="aIpmerchandises.epl_Id" name="txtid">
          </div>
        </div>
        <div class="form-group row pb-2">
          <label for="txtfirstName" class="col-4 col-form-label repuire text-dark"
            style="text-align: left;"><strong>firstName</strong></label>
          <div class="col-8">
-           <input type="text" class="form-control" id="txtfirstName" [(ngModel)]="aIpmerchandises.firstName"
+           <input type="text" class="form-control" id="txtfirstName" [(ngModel)]="aIpmerchandises.imp_Date"
              name="txtfirstName">
          </div>
        </div>
@@ -104,21 +92,21 @@
          <label for="txtlastname" class="col-4 col-form-label repuire text-dark"
            style="text-align: left;"><strong>lastname</strong></label>
          <div class="col-8">
-           <input type="text" class="form-control" id="txtlastname" [(ngModel)]="aIpmerchandises.lastName" name="txtlastname">
+           <input type="text" class="form-control" id="txtlastname" [(ngModel)]="aIpmerchandises.imp_Id" name="txtlastname">
          </div>
        </div>
        <div class="form-group row pb-2">
          <label for="txtgmail" class="col-4 col-form-label repuire text-dark"
            style="text-align: left;"><strong>Gmail</strong></label>
          <div class="col-8">
-           <input type="text" class="form-control" id="txtgmail" [(ngModel)]="aIpmerchandises.email" name="txtgmail">
+           <input type="text" class="form-control" id="txtgmail" [(ngModel)]="aIpmerchandises.imp_Id" name="txtgmail">
          </div>
        </div>
        <div class="form-group row pb-2">
          <label for="txtphone" class="col-4 col-form-label repuire text-dark"
            style="text-align: left;"><strong>Phone</strong></label>
          <div class="col-8">
-           <input type="text" class="form-control" id="txtphone" [(ngModel)]="aIpmerchandises.phone" name="txtphone">
+           <input type="text" class="form-control" id="txtphone" [(ngModel)]="aIpmerchandises.id" name="txtphone">
          </div>
        </div>
      </div>

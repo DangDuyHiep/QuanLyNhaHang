@@ -11,61 +11,93 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 })
 export class AccordionsComponent implements OnInit {
 
+  @ViewChild('editModal', { static: false }) editModal: ModalDirective;
+  @ViewChild('alertModal', { static: false }) alertModal: ModalDirective;
+
   message: string;
   action : string;
-  aMerchandises : merchandises = {} as merchandises;
-  constructor(private route : ActivatedRoute , private router:Router , private merchandisesService : MerchandisesService) { }
-
-  @ViewChild('editModal', { static: false }) editModal: ModalDirective;
-
+  aMechandises : merchandises = {} as merchandises;
+  id : number;
+  // data : Array<employee>;
+  totalRecords : number;
+  Page : number = 1;
+  constructor(private route : ActivatedRoute , private router : Router , private  MerchandisesService : MerchandisesService) {
+  }
   mechandises : merchandises[] = [];
-  ngOnInit(): void {
+
+  ngOnInit() : void {
     this.loadData();
   }
 
   loadData(){
-    this.merchandisesService.getAll().subscribe(res => {
-      this.mechandises = res.data;
-    });
-  }
-  delete(id : number){
-    this.merchandisesService.delete(id).subscribe(res => {
-      this.loadData();
+    this.MerchandisesService.getAll().subscribe(res => {
+      this.mechandises = res;
+      console.log(this.mechandises);
+      this.totalRecords = res.length;
     });
   }
 
   hidemodal(){
     this.editModal.hide();
-    this.loadData();
   }
 
   showmodal(id : number){
-    this.editModal.show();
     if(id===0)
     {
       this.action = 'Thêm';
-      this.aMerchandises = {id : 0} as merchandises;
+      this.aMechandises = {id : 0} as merchandises;
+      this.editModal.show();
+      this.loadData();
+
     }else{
       this.action = 'Cập nhập';
-      this.merchandisesService.get(id).subscribe(res =>{
-        this.aMerchandises = res.data;
+      this.MerchandisesService.get(id).subscribe(res =>{
+      console.log(res);
+      this.aMechandises = res;
+      this.editModal.show();
+      this.loadData();
+
       });
     }
   }
 
   save(){
-    if(this.aMerchandises.id === 0)
+    if(this.aMechandises.id == 0)
     {
-      this.merchandisesService.add(this.aMerchandises).subscribe(res => {
-        this.hidemodal();
+      this.MerchandisesService.add(this.aMechandises).subscribe(res => {
+        this.editModal.hide();
         this.loadData();
       });
-
     }else{
-      this.merchandisesService.update(this.aMerchandises).subscribe(res => {
-        this.hidemodal();
+      console.log(this.aMechandises);
+      this.MerchandisesService.update(this.aMechandises).subscribe(res => {
+        this.editModal.hide();
         this.loadData();
       });
     }
   }
+
+  hideAlertModal(){
+    this.alertModal.hide();
+  }
+
+  showAlertmodal(id : number){
+      this.action = 'Xóa';
+      this.MerchandisesService.get(id).subscribe(res =>{
+        this.aMechandises = res;
+      });
+      this.alertModal.show();
+  }
+
+  saveDelete(){
+    this.MerchandisesService.delete(this.id).subscribe(res => {
+      this.loadData();
+    });
+  }
+
+  // delete(id : number){
+  //   this.MerchandisesService.delete(id).subscribe(res => {
+  //     this.loadData();
+  //   });
+  // }
 }

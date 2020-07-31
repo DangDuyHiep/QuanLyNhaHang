@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { employee } from 'src/app/models/datatypes';
+import { employee, dateToDate, exportorder, detailExportOrders } from 'src/app/models/datatypes';
 import { Router } from '@angular/router';
 import { OverviewsService } from 'src/app/services/overviews.service';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,167 +11,103 @@ import { OverviewsService } from 'src/app/services/overviews.service';
   styleUrls: ['./Overviews.component.scss'],
 })
 export class DashboardComponent implements OnInit {
+  @ViewChild('editModal', { static: false }) editModal: ModalDirective;
 
+  message: string;
+  action : string;
+  aDetail : detailExportOrders = {} as detailExportOrders;
   aEmployee : employee = {} as employee;
+  aExportorder : exportorder = {} as exportorder;
+  aDateTo : dateToDate = {} as dateToDate;
   constructor(private modalService: NgbModal , private router:Router , private overviewService : OverviewsService) {}
-
+  exportorder : exportorder[] = [];
+  detailExport : detailExportOrders[] = [];
+  dateTo: dateToDate [] = [];
   employee : employee[] = [];
+  countTB : number = 0;
+  CountWkTB : number = 0;
+  Total : number = 0;
+  SumDateToDate : number = 0;
+
   ngOnInit() : void{
     this.loadData();
+    this.countTable();
+    this.CountWkTable();
+    this.loadTotal();
   }
 
   loadData(){
     this.overviewService.getAll().subscribe(res => {
-      this.employee = res.data;
+        this.employee = res;
+        console.log(this.employee);
+      });
+  }
+
+  showList(){
+    console.log(this.aDateTo);
+    this.overviewService.listDateToDate(this.aDateTo).subscribe(res =>{
+      this.exportorder = res;
+      console.log(this.exportorder);
+    });
+
+    this.overviewService.sumDateToDate(this.aDateTo).subscribe(res =>{
+      this.SumDateToDate = res;
+      console.log(this.SumDateToDate);
     });
   }
 
-  date: Date = new Date();
+  hidemodal(){
+    this.editModal.hide();
+  }
 
-  visitSaleChartData = [{
-    label: 'CHN',
-    data: [20, 40, 15, 35, 25, 50, 30, 20],
-    borderWidth: 1,
-    fill: false,
-  },
-  {
-    label: 'USA',
-    data: [40, 30, 20, 10, 50, 15, 35, 40],
-    borderWidth: 1,
-    fill: false,
-  },
-  {
-    label: 'UK',
-    data: [70, 10, 30, 40, 25, 50, 15, 30],
-    borderWidth: 1,
-    fill: false,
-  }];
-
-  visitSaleChartLabels = ["2013", "2014", "2014", "2015", "2016", "2017"];
-
-  visitSaleChartOptions = {
-    responsive: true,
-    legend: false,
-    scales: {
-        yAxes: [{
-            ticks: {
-                display: false,
-                min: 0,
-                stepSize: 20,
-                max: 80
-            },
-            gridLines: {
-              drawBorder: false,
-              color: 'rgba(235,237,242,1)',
-              zeroLineColor: 'rgba(235,237,242,1)'
-            }
-        }],
-        xAxes: [{
-            gridLines: {
-              display:false,
-              drawBorder: false,
-              color: 'rgba(0,0,0,1)',
-              zeroLineColor: 'rgba(235,237,242,1)'
-            },
-            ticks: {
-                padding: 20,
-                fontColor: "#9c9fa6",
-                autoSkip: true,
-            },
-            categoryPercentage: 0.4,
-            barPercentage: 0.4
-        }]
-      }
-  };
-
-  visitSaleChartColors = [
+  showmodal(id : number){
+    if(id===0)
     {
-      backgroundColor: [
-        'rgba(154, 85, 255, 1)',
-        'rgba(154, 85, 255, 1)',
-        'rgba(154, 85, 255, 1)',
-        'rgba(154, 85, 255, 1)',
-        'rgba(154, 85, 255, 1)',
-        'rgba(154, 85, 255, 1)',
-        'rgba(154, 85, 255, 1)',
-      ],
-      borderColor: [
-        'rgba(154, 85, 255, 1)',
-        'rgba(154, 85, 255, 1)',
-        'rgba(154, 85, 255, 1)',
-        'rgba(154, 85, 255, 1)',
-        'rgba(154, 85, 255, 1)',
-        'rgba(154, 85, 255, 1)',
-      ]
-    },
-    {
-      backgroundColor: [
-        'rgba(254, 112, 150, 1)',
-        'rgba(254, 112, 150, 1)',
-        'rgba(254, 112, 150, 1)',
-        'rgba(254, 112, 150, 1)',
-        'rgba(254, 112, 150, 1)',
-        'rgba(254, 112, 150, 1)',
-      ],
-      borderColor: [
-        'rgba(254, 112, 150, 1)',
-        'rgba(254, 112, 150, 1)',
-        'rgba(254, 112, 150, 1)',
-        'rgba(254, 112, 150, 1)',
-        'rgba(254, 112, 150, 1)',
-        'rgba(254, 112, 150, 1)',
-      ]
-    },
-    {
-      backgroundColor: [
-        'rgba(177, 148, 250, 1)',
-        'rgba(177, 148, 250, 1)',
-        'rgba(177, 148, 250, 1)',
-        'rgba(177, 148, 250, 1)',
-        'rgba(177, 148, 250, 1)',
-        'rgba(177, 148, 250, 1)',
-      ],
-      borderColor: [
-        'rgba(177, 148, 250, 1)',
-        'rgba(177, 148, 250, 1)',
-        'rgba(177, 148, 250, 1)',
-        'rgba(177, 148, 250, 1)',
-        'rgba(177, 148, 250, 1)',
-        'rgba(177, 148, 250, 1)',
-      ]
-    },
-  ];
+      this.action = 'Thêm';
+      this.aExportorder = {id : 0} as exportorder;
+      this.editModal.show();
+      this.loadData();
 
-  trafficChartData = [
-    {
-      data: [30, 30, 40],
+    }else{
+      this.action = 'Chi tiết hóa đơn';
+      this.overviewService.getDetail(id).subscribe(res =>{
+      console.log(res);
+      this.aDetail = res;
+      this.editModal.show();
+      this.loadData();
+
+      });
     }
-  ];
+  }
 
-  trafficChartLabels = ["Search Engines", "Direct Click", "Bookmarks Click"];
+  // sumDate(){
+  //   this.overviewService.sumDateToDate(this.aDateTo).subscribe(res =>{
+  //     this.SumDateToDate = res;
+  //     console.log(this.SumDateToDate);
+  //   });
+  // }
 
-  trafficChartOptions = {
-    responsive: true,
-    animation: {
-      animateScale: true,
-      animateRotate: true
-    },
-    legend: false,
-  };
+  loadTotal(){
+    this.overviewService.getTotal().subscribe(res =>{
+      this.Total = res;
+      console.log(this.Total);
+    });
+  }
+  countTable(){
+    this.overviewService.getCountTable().subscribe(res =>{
+      this.countTB = res;
+      console.log(this.countTB);
+    });
+  }
 
-  trafficChartColors = [
-    {
-      backgroundColor: [
-        'rgba(177, 148, 250, 1)',
-        'rgba(254, 112, 150, 1)',
-        'rgba(132, 217, 210, 1)'
-      ],
-      borderColor: [
-        'rgba(177, 148, 250, .2)',
-        'rgba(254, 112, 150, .2)',
-        'rgba(132, 217, 210, .2)'
-      ]
-    }
-  ];
+
+  CountWkTable(){
+    this.overviewService.getCountTableWK().subscribe(res =>{
+      this.CountWkTB = res;
+      console.log(this.CountWkTB);
+    });
+  }
+
+
 
 }

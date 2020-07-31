@@ -26,7 +26,7 @@ export class DropdownsComponent implements OnInit {
 
   loadData(){
     this.importMerchandisesSV.getAll().subscribe(res => {
-      this.importmerchandises = res.data;
+      this.importmerchandises = res;
     });
   }
 
@@ -50,8 +50,8 @@ export class DropdownsComponent implements OnInit {
     }else{
       this.action = 'Update';
       this.importMerchandisesSV.get(id).subscribe(res =>{
-        console.log(res.data);
-        this.aIpmerchandises = res.data;
+        console.log(res);
+        this.aIpmerchandises = res;
         this.editModal.show();
       });
     }

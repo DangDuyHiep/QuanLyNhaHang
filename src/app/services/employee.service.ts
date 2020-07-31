@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { employee } from '../models/datatypes';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { RootObject } from '../models/root-object';
+import { Observable, from } from 'rxjs';
+import {  } from '../models/root-object';
 import { ApiService } from './api.service';
 
 
@@ -11,22 +11,22 @@ import { ApiService } from './api.service';
 })
 export class EmployeeService {
   constructor(private http: HttpClient, private api: ApiService) { }
-  getAll(): Observable<RootObject<[employee]>> {
+  getAll(): Observable<[employee]> {
     /*get api */
-    return this.http.get<RootObject<[employee]>>(this.api.urls.student);
+    return this.http.get<[employee]>(this.api.urls.employee);
   }
 
-  get(id: number): Observable<RootObject<employee>> {
-    return this.http.get<RootObject<employee>>(`${this.api.urls.student}?id=${id}`);
+  get(id: number): Observable<employee> {
+    return this.http.get<employee>(`${this.api.urls.employee}/${id}`);
   }
 
-  add(data : employee): Observable<RootObject<employee>>{
-    return this.http.post<RootObject<employee>>(this.api.urls.student,data);
+  add(data : employee): Observable<employee>{
+    return this.http.post<employee>(this.api.urls.employee,data);
   }
-  update(data : employee): Observable<RootObject<employee>>{
-    return this.http.put<RootObject<employee>>(`${this.api.urls.student}?id=${data.id}`,data);
+  update(data : employee): Observable<employee>{
+    return this.http.put<employee>(`${this.api.urls.employee}/${data.id}`,data);
   }
-  delete(id : number): Observable<RootObject<null>>{
-    return this.http.delete<RootObject<null>>(`${this.api.urls.student}?id=${id}`);
+  delete(id : number): Observable<null>{
+    return this.http.delete<null>(`${this.api.urls.employee}/${id}`);
   }
 }

@@ -20,8 +20,12 @@ import { TodoListComponent } from './apps/todo-list/todo-list.component';
 import { EmloyeeEditComponent } from './Employee/emloyee-edit/emloyee-edit.component';
 import { EmloyeeComponent } from './Employee/emloyee/emloyee.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { RouterModule, Routes } from '@angular/router';
 
-
+const routes: Routes = [
+  { path: 'overviews', component: DashboardComponent }
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +50,9 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     FormsModule,
     ReactiveFormsModule,
     ChartsModule,
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    ModalModule.forChild(),
+    RouterModule.forChild(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
