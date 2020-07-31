@@ -21,6 +21,8 @@ import { EmloyeeEditComponent } from './Employee/emloyee-edit/emloyee-edit.compo
 import { EmloyeeComponent } from './Employee/emloyee/emloyee.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { FoodService } from './services/food.service';
+import { DefaultAdminComponent } from './default/default-admin/default-admin.component';
+import { DefaultStaffComponent } from './default/default-staff/default-staff.component';
 
 
 
@@ -37,6 +39,8 @@ import { FoodService } from './services/food.service';
     ContentAnimateDirective,
     EmloyeeEditComponent,
     EmloyeeComponent,
+    DefaultAdminComponent,
+    DefaultStaffComponent,
 
   ],
   imports: [

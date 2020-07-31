@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { Observable } from 'rxjs';
-import { Bill } from '../Models/bill';
+import { Bill, DateToDate } from '../Models/bill';
 import { HttpClient } from '@angular/common/http';
 import { DetailBill } from '../Models/detail-bill';
 
@@ -24,6 +24,9 @@ export class BillService {
     return this.http.post<DetailBill>(this.api.urls.detailBill, data);
   }
 
+  dateToDate(data: DateToDate): Observable<Bill> {
+    return this.http.post<Bill>(this.api.urls.dateToDate, data);
+  }
   
 
 }
